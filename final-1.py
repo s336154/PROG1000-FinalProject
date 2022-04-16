@@ -7,6 +7,10 @@ Created on Thu Apr 14 12:20:02 2022
 import pandas as pd
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
+import warnings
+
+#suppressing future warnings
+warnings.filterwarnings("ignore")
 
 ###############################################################################
 ################################### 1.(a) #####################################
@@ -88,6 +92,7 @@ print('\n >> The minimum value for each variable in the data set is: \n')
 print(vs_2.min(numeric_only=True))
 print('\n >> The standard deviation for each variable in the data set is: \n')
 print(vs_2.std(numeric_only=True))
+
 
 ###############################################################################
 ################################### 2.(b) #####################################
@@ -302,6 +307,7 @@ if "+-" in returns:
 
 #obtaining adjusted r-squared for the model
 adj_rsq= model.rsquared_adj
+adj_pros =  round(100*adj_rsq,2)
 
 #displaying exercise number
 print('\n\n===================================================================')
@@ -310,7 +316,7 @@ print('\r==================== Exercise 4 a =================================')
 #dispalying exercise solution
 print('\n\n >> Here is an estimate for the regression model: ')
 print('\nReturns = '+returns)
-print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.format((100*adj_rsq)))
+print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.format(adj_pros))
 
 ###############################################################################
 ################################### 4.(b) #####################################
@@ -329,9 +335,10 @@ Novelty= 42 #int(input('Novelty: '))
 #calculating the returns
 returns = alpha+beta1*Differentiation+beta2*Cost_leadership+beta3*Efficiency\
     +beta4*Novelty
+returns_pros = round(100*returns,2)
   
 #dispalying exercise solution
-print('\n\nReturns = {:.5f} (i.e. almost {} %)'.format(returns, round(100*returns,2)))
+print('\n\nReturns = {:.5f} (i.e. almost {} %)'.format(returns, returns_pros))
 
 ###############################################################################
 ################################### 4.(c) #####################################
@@ -349,10 +356,11 @@ Novelty= 55 #int(input('Novelty: '))
 
 #calculating the returns
 returns = alpha+beta1*Differentiation+beta2*Cost_leadership+beta3*Efficiency\
-    +beta4*Novelty
+    +beta4*Novelty 
+returns_pros = round(100*returns,2)
  
 #dispalying exercise solution
-print('\n\nReturns = {:.5f} (i.e. almost {} %)'.format(returns, round(100*returns,2)))
+print('\n\nReturns = {:.5f} (i.e. almost {} %)'.format(returns, returns_pros))
 
 ###############################################################################
 ################################### 5.(a) #####################################
@@ -397,7 +405,7 @@ if "+-" in returns_2:
 
 #obtaining adjusted r-squared for the model    
 adj_rsq2= model2.rsquared_adj
-
+adj_pros2 = 100*adj_rsq2
 #displaying exercise number
 print('\n\n===================================================================')
 print('\r==================== Exercise 5.b.1 ===============================')
@@ -405,7 +413,7 @@ print('\r==================== Exercise 5.b.1 ===============================')
 #dispalying exercise solution
 print('\n\n >> Here is an estimate for the regression model for Financial Sector: ')
 print('\nReturns = '+returns_2)
-print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.format(100*adj_rsq2))
+print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.format(adj_pros2))
 
 ###############################################################################
 ################################## 5.(b).2 ####################################
@@ -441,6 +449,7 @@ if "+-" in returns_3:
 
 #obtaining adjusted r-squared for the model     
 adj_rsq3= model3.rsquared_adj
+adj_pros3 = 100*adj_rsq3
 
 #displaying exercise number
 print('\n\n===================================================================')
@@ -449,7 +458,7 @@ print('\r==================== Exercise 5.b.2 ===============================')
 #dispalying exercise solution
 print('\n\n >> Here is an estimate for the regression model for Industrial Sector: ')
 print('\nReturns = '+returns_3)
-print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.format(100*adj_rsq3))
+print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.format(adj_pros3))
 
 ###############################################################################
 ################################## 5.(b).3 ####################################
@@ -485,6 +494,7 @@ if "+-" in returns_4:
  
 #obtaining adjusted r-squared for the model 
 adj_rsq4= model4.rsquared_adj
+adj_pros4 = 100*adj_rsq4
 
 #displaying exercise number
 print('\n\n===================================================================')
@@ -493,7 +503,7 @@ print('\r==================== Exercise 5.b.3 ===============================')
 #dispalying exercise solution
 print('\n\n >> Here is an estimate for the regression model for Information\n Technology Sector: ')
 print('\nReturns = '+returns_4)
-print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.format(100*adj_rsq4))
+print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.format(adj_pros4))
 
 ###############################################################################
 ################################## 5.(b).4 ####################################
@@ -536,14 +546,15 @@ def adj_rsqFunc(y,x):
     
     # obtain adjusted r-squared
     adj_rsquared= modelF.rsquared_adj
+    adj_pros = 100*adj_rsquared
     
     #displaying exercise number
     print('\n\n===================================================================')
     print('\r==================== Exercise 6 a =================================')
     
     #dispalying exercise solution
-    print('\n\nAdjusted r-squared = {:.5f}'.format(adj_rsquared))
-    print('\n\n >> The model explains nearly {:.2f} % of the variations in the model.\n\n'.format(100*adj_rsquared))
+    print('\n\n >> Adjusted r-squared = {:.5f}'.format(adj_rsquared))
+    print('\n\n >> The model explains nearly {:.2f} % of the variations in the model.\n\n'.format(adj_pros))
     print('\n\n====================================================================')
     print('\r====================================================================\n\n')        
         
