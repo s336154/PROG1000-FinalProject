@@ -433,6 +433,10 @@ vs_Financials = values_survey[values_survey['Sector'] == "Financials"]
 vs_Industrials = values_survey[values_survey['Sector'] == "Industrials"]
 vs_IT = values_survey[values_survey['Sector'] == "Information Technology"]
 
+#vs_Financials.to_excel('vs_Financials.xlsx', sheet_name = 'SurveyValues', index = False)
+#vs_Industrials.to_excel('vs_Industrials.xlsx', sheet_name = 'SurveyValues', index = False)
+#vs_IT.to_excel('vs_IT.xlsx', sheet_name = 'SurveyValues', index = False)
+
 """
 b) Run a regression on each of the sub-sets of data. Does any of these 
 regressions obtain a higher adjusted 𝑅
