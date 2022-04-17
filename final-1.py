@@ -239,13 +239,13 @@ ax[2].hist(values_survey[values_survey['Sector'] == 'Financials' ]['returns'].dr
 
 # set axis labels
 ax[0].set_xlabel('Returns', color='green', fontsize=16)
-ax[0].set_ylabel('Total Occurence', color='green', fontsize=16)
+ax[0].set_ylabel('Total Occurences', color='green', fontsize=16)
 
 ax[1].set_xlabel('Returns', color='blue', fontsize=16)
-ax[1].set_ylabel('Total Occurence', color='blue', fontsize=16)
+ax[1].set_ylabel('Total Occurences', color='blue', fontsize=16)
 
 ax[2].set_xlabel('Returns', color='purple', fontsize=16)
-ax[2].set_ylabel('Total Occurence', color='purple', fontsize=16)
+ax[2].set_ylabel('Total Occurences', color='purple', fontsize=16)
 
 # set figure title
 fig.suptitle('Sectors returns', fontsize = 27)
@@ -517,13 +517,13 @@ print('\r==================== Exercise 5.b.4 ===============================')
 if adj_rsq2 > adj_rsq or adj_rsq3 > adj_rsq or adj_rsq3 > adj_rsq:
     print('\n\n >>  The first model explained lower variation than the splitted.')
     if adj_rsq2 > adj_rsq:
-     print('\n  >> The data  obtained from Financial Sector explained more variations\n in the dataset than the original model.')
+     print('\n  >> The data  obtained from Financial Sector explained more variations\n in the dataset than the original data set for three sectors.')
     elif adj_rsq3 > adj_rsq:
-          print('\n >>  The data obtained from Industrial Sector explained more variations\n in the dataset than\n the original model.')
+          print('\n >>  The data obtained from Industrial Sector explained more variations\n in the dataset than\n the original data set for three sectors.')
     else:
-        print('\n >>  The data obtained from Information Technology Sector explained more\n variations in the dataset than the original model.')
+        print('\n >>  The data obtained from Information Technology Sector explained more\n variations in the dataset than the original data set for three sectors.')
 else:
-    print('\n\n >>  The data obtained from original model explained more variations\n in the dataset than all of the models for splitted data.')        
+    print('\n\n >>  The data obtained from original data set explained more variations\n than all of the models for splitted data.')
         
 ###############################################################################
 ################################## 6.(a) ######################################
