@@ -202,9 +202,15 @@ ax[1,0].spines[['right', 'top']].set_visible(False)
 ax[1,1].spines[['right', 'top']].set_visible(False)
            
 # save figure
-fig.savefig('2b_scatterVS.png',      # name (and path) for storing image
+Fname2b = '2b_scatterVS.png'
+fig.savefig(Fname2b,      # name (and path) for storing image
             dpi = 300,           # image resolution
             bbox_inches='tight') # remove white space around image
+
+
+print('\n\n===================================================================')
+print('\r==================== Exercise 2 b =================================')
+print("\n\n >> A figure with the name '{}' has been created and\n saved in the device.\n\n".format(Fname2b))
 
 ###############################################################################
 ################################### 3.(a) #####################################
@@ -237,9 +243,14 @@ ax.set_title("Average sectors' returns", fontsize = 24)
 ax.spines[['right', 'top']].set_visible(False)
 
 # save figure
-plt.savefig('3a_barSectors.png',       # name (and path) for storing image
+Fname3a= '3a_barSectors.png'
+plt.savefig(Fname3a,       # name (and path) for storing image
             dpi = 300,           # image resolution
             bbox_inches='tight') # remove white space around image
+
+print('\n\n===================================================================')
+print('\r==================== Exercise 3 a =================================')
+print("\n\n >> A figure with the name '{}' has been created and\n saved in the device.\n\n".format(Fname3a))
 
 ###############################################################################
 ################################### 3.(b) #####################################
@@ -291,9 +302,14 @@ ax[1].spines[['right', 'top']].set_visible(False)
 ax[2].spines[['right', 'top']].set_visible(False)
 
 # save figure
-plt.savefig('3b_histSectors.png',       # name (and path) for storing image
+Fname3b = '3b_histSectors.png'
+plt.savefig(Fname3b,       # name (and path) for storing image
             dpi = 300,           # image resolution
             bbox_inches='tight') # remove white space around image
+
+print('\n\n===================================================================')
+print('\r==================== Exercise 3 a =================================')
+print("\n\n >> A figure with the name '{}' has been created and\n saved in the device.\n\n".format(Fname3b))
 
 ###############################################################################
 ################################### 4.(a) #####################################
@@ -1020,9 +1036,14 @@ ax[1,1].spines[['right', 'top']].set_visible(False)
 #ax.legend(loc = 'upper right')
            
 # save figure
-fig.savefig('E7_predictVS.png',      # name (and path) for storing image
+FnameE7 = 'E7_predictVS.png'
+fig.savefig(FnameE7,      # name (and path) for storing image
             dpi = 300,           # image resolution
             bbox_inches='tight') # remove white space around image
+
+print('\n\n===================================================================')
+print('\r====================== Extra 7 ====================================')
+print("\n\n >> A figure with the name '{}' has been created and\n saved in the device.\n\n".format(FnameE7))
 
 ###############################################################################
 ################################### Extra 8 ###################################
@@ -1035,15 +1056,26 @@ corrDC = values_survey.corr().loc['Differentiation', 'Cost leadership']
 corrNC = values_survey.corr().loc['Novelty', 'Cost leadership']
 corrNE= values_survey.corr().loc['Novelty', 'Efficiency']
 
+corrDR = corr_def
+corrCLR = corr_cosled
+corrEffR= corr_effec
+corrNR =  corr_nov
+
+
 print('\n\n===================================================================')
 print('\r====================== Extra 8 ====================================')
 
-print('\nCorrelation between Novelty and Differentiation is: {:.4f}'.format(corrND))
-print('\nCorrelation between Cost leadership and Efficiency is: {:.4f}'.format(corrCE))
-print('\nCorrelation between Differentiation and Efficiency is: {:.4f}'.format(corrDE))
-print('\nCorrelation between Differentiation and Cost leadership is: {:.4f}'.format(corrDC))
-print('\nCorrelation between Novelty and Cost leadership is: {:.4f}'.format(corrNC))
-print('\nCorrelation between Novelty and Efficiency is: {:.4f}'.format(corrNE))
+print('\n >> Correlation between Differentiation and Returns is: {:.4f}'.format(corrDR))
+print('\n >> Correlation between Cost leadership and Returns is: {:.4f}'.format(corrCLR))
+print('\n >> Correlation between Efficiency and Returns is: {:.4f}'.format(corrEffR))
+print('\n >> Correlation between Novelty and Returns is: {:.4f}'.format(corrNR))
+
+print('\n >> Correlation between Novelty and Differentiation is: {:.4f}'.format(corrND))
+print('\n >> Correlation between Cost leadership and Efficiency is: {:.4f}'.format(corrCE))
+print('\n >> Correlation between Differentiation and Efficiency is: {:.4f}'.format(corrDE))
+print('\n >> Correlation between Differentiation and Cost leadership is: {:.4f}'.format(corrDC))
+print('\n >> Correlation between Novelty and Cost leadership is: {:.4f}'.format(corrNC))
+print('\n >> Correlation between Novelty and Efficiency is: {:.4f}'.format(corrNE))
       
 
 
@@ -1087,7 +1119,7 @@ print(vs_Industrials.loc[vs_Industrials.index[vs_Industrials['returns']==vs_Indu
 
 
 ###############################################################################
-################################### Extra 9 ###################################
+################################### Extra 10 ##################################
 ###############################################################################
 """
 print('\n\n===================================================================')
@@ -1108,6 +1140,57 @@ returns_pros = round(100*returns,2)
   
 #dispalying exercise solution
 print('\n\nReturns = {:.5f} (i.e. almost {} %)'.format(returns, returns_pros))
+"""
+
+
+###############################################################################
+################################### Extra 11 ##################################
+###############################################################################
+"""
+#storing dataframe's columns in variables
+Y = values_survey['returns']
+X11= values_survey[['Differentiation','Cost leadership', 'Efficiency', 'Novelty']]
+
+
+# create figure and subplots
+fig, ax = plt.subplots(figsize = (18, 12))
+
+
+# plot subplots
+ax.scatter(X, Y,
+           marker = ".",
+           s = 40, 
+           color = 'red')
+
+
+# set y-axis labels
+ax.set_ylabel('Returns', fontsize = 17)
+
+# set x-axis labels
+ax.set_xlabel('Strategies', fontsize = 17)
+
+
+# set y-axis range
+ax.set_ylim(min(Y),max(Y))
+
+# set x-axis range
+ax.set_xlim(min(X),max(X))
+
+# add title to figure
+fig.suptitle('Strategies and Returns', fontsize= 30)
+
+# hide the right and top spines
+ax.spines[['right', 'top']].set_visible(False)
+        
+# save figure
+Fname11 = 'E11_scatterVS.png'
+fig.savefig(Fname11,      # name (and path) for storing image
+            dpi = 300,           # image resolution
+            bbox_inches='tight') # remove white space around image
+
+print('\n\n===================================================================')
+print('\r====================== Extra 11 ===================================')
+print("\n\n >> A figure with the name '{}' has been created and saved in the device.".format(Fname11))
 """
 print('\n\n====================================================================')
 print('\r====================================================================\n\n')  
