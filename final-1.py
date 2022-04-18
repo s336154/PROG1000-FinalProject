@@ -77,51 +77,78 @@ for item1, item2 in zip(vs_2['FirmV2022'], vs_2['FirmV2017']):
 vs_2['returns'] = vs_returns
 
 #displaying exercise number
-print('\n\n===================================================================')
-print('\r==================== Exercise 2.a =================================')
+print('\n\n==========================================================================================================================')
+print('\r================================================== Exercise 2.a ==========================================================')
 
-#displaying descriptive statistics
+
+#splitting the dataset based on sectors
+vs_Financials = values_survey[values_survey['Sector'] == "Financials"]
+vs_Industrials = values_survey[values_survey['Sector'] == "Industrials"]
+vs_IT =  values_survey[values_survey['Sector'] == "Information Technology"]
+
+#displaying descriptive statistics for whole data set
 print('\n\n >> Here are descriptive statistics for the data set: ')
-print('\n >> The median outcome for returns and associated comapany info and\n strategy details in the data set is: \n')
+print('\n >> The total number of companies sampled in the whole data set is: \n')
+print(" "+str(vs_2['returns'].count())+ " Companies")
+print('\n >> The different sectors where the companies sampled operates in are: \n')
+print(" "+str(values_survey['Sector'].nunique())+" Sectors\n")
+print(" 1. "+values_survey['Sector'].unique()[0]+ "\n 2. " +values_survey['Sector'].unique()[1]+"\n 3. "+values_survey['Sector'].unique()[2] )
+print('\n >> The average outcome for the returns based on the whole data set is: \n')
+print(" "+str(round(100*vs_2['returns'].mean(),2))+ " %")
+print('\n However, no company in the data set had precisely gained the mean outcome for the returns based on this sample.\n')
+print('\n >> The median outcome for returns and associated comapany info and strategy details in the data set is: \n')
 print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].median()].tolist()[0]])
-print('\n >> The maximum value for returns and associated comapany info and\n strategy details in the data set is: \n')
+print('\n >> The maximum value for returns and associated comapany info and strategy details in the data set is: \n')
 print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].max()].tolist()[0]])
-print('\n >> The minimum value for returns and associated comapany info and\n strategy details in the data set is: \n')
+print('\n >> The minimum value for returns and associated comapany info and strategy details in the data set is: \n')
 print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].min()].tolist()[0]])
 
+#displaying descriptive statistics for IT Sector
+print('\n\n >> Here are descriptive statistics for the data set for IT Sector: ')
+print('\n >> The total number of companies sampled from IT Sector in the data set is: \n')
+print(" "+str(vs_IT['returns'].count())+ " Companies")
+print('\n >> The average outcome for the returns in the IT Sector based on the whole data set is: \n')
+print(" "+str(round(100*vs_IT['returns'].mean(),2))+ " %")
+print('\n However, no company in the IT Sector had precisely gained the mean outcome for the returns based on this sample.\n')
+print('\n >> The median outcome for returns and associated comapany info and strategy details in IT Sector is: \n')
+print(vs_IT.loc[vs_IT.index[vs_IT['returns']==vs_IT['returns'].median()].tolist()[0]])
+print('\n >> The maximum value for returns and associated comapany info and strategy details in IT Sector is: \n')
+print(vs_IT.loc[vs_IT.index[vs_IT['returns']==vs_IT['returns'].max()].tolist()[0]])
+print('\n >> The minimum value for returns and associated comapany info and strategy details in IT Sector is: \n')
+print(vs_IT.loc[vs_IT.index[vs_IT['returns']==vs_IT['returns'].min()].tolist()[0]])
+
+#displaying descriptive statistics for Finincial Sector
+print('\n\n >> Here are descriptive statistics for the data set for Finincial Sector: ')
+
+print('\n >> The total number of companies sampled from Finincial Sector in the data set is: \n')
+print(" "+str(vs_Financials['returns'].count())+ " Companies")
+print('\n >> The average outcome for the returns in the Finicial Sector based on the whole data set is: \n')
+print(" "+str(round(100*vs_Financials['returns'].mean()))+ " %")
+print('\n However, no company in the Finicial Sector had precisely gained this mean outcome for the returns based on this sample.\n')
+print('\n >> The median outcome for returns and associated comapany info and strategy details in the Finincial Sector is: \n')
+print(vs_Financials.loc[vs_Financials.index[vs_Financials['returns']==vs_Financials['returns'].median()].tolist()[0]])
+print('\n >> The maximum value for returns and associated comapany info and strategy details inFinincial Sector is: \n')
+print(vs_Financials.loc[vs_Financials.index[vs_Financials['returns']==vs_Financials['returns'].max()].tolist()[0]])
+print('\n >> The minimum value for returns and associated comapany info and strategy details in Finincial Sector is: \n')
+print(vs_Financials.loc[vs_Financials.index[vs_Financials['returns']==vs_Financials['returns'].min()].tolist()[0]])
+
+#displaying descriptive statistics for Industrial Sector
+print('\n\n >> Here are descriptive statistics for the data set for Industrial Sector: ')
+
+print('\n >> The total number of companies sampled from Industrial Sector in the data set is: \n')
+print(" "+str(vs_Industrials['returns'].count())+ " Companies")
+print('\n >> The average outcome for the returns in the Industrial Sector based on the whole data set is: \n')
+print(" "+str(round(100*vs_Industrials['returns'].mean(),2))+ " %")
+print('\n However, no company in the Industrial Sector had precisely gained the mean outcome for the returns based on this sample.\n')
+print('\n >> The median outcome for returns and associated comapany info and strategy details in Industrial Sectoris: \n')
+print(vs_Industrials.loc[vs_Industrials.index[vs_Industrials['returns']==vs_Industrials['returns'].median()].tolist()[0]])
+print('\n >> The maximum value for returns and associated comapany info and strategy details in Industrial Sector is: \n')
+print(vs_Industrials.loc[vs_Industrials.index[vs_Industrials['returns']==vs_Industrials['returns'].max()].tolist()[0]])
+print('\n >> The minimum value for returns and associated comapany info and strategy details in Industrial Sector is: \n')
+print(vs_Industrials.loc[vs_Industrials.index[vs_Industrials['returns']==vs_Industrials['returns'].min()].tolist()[0]])
 
 
-'''
-print('\n\n >> Here are descriptive statistics for the Financial Sector: ')
-print('\n >> The mean outcome for each variable in the Financial Sector: \n')
-print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].mean()].tolist()[0]])
-print('\n >> The maximum value for each variable in the Financial Sector: \n')
-print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].max()].tolist()[0]])
-print('\n >> The minimum value for each variable in the Financial Sector: \n')
-print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].min()].tolist()[0]])
-print('\n >> The standard deviation for each variable in the Financial Sector: \n')
-print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].std()].tolist()[0]])
 
-print('\n\n >> Here are descriptive statistics for the Industrial Sector: ')
-print('\n >> The mean outcome for each variable in the Industrial Sector: \n')
-print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].mean()].tolist()[0]])
-print('\n >> The maximum value for each variable in the Industrial Sector: \n')
-print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].max()].tolist()[0]])
-print('\n >> The minimum value for each variable in the Industrial Sector: \n')
-print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].min()].tolist()[0]])
-print('\n >> The standard deviation for each variable in Industrial Sector: \n')
-print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].std()].tolist()[0]])
-
-print('\n\n >> Here are descriptive statistics for the Information Technology Sector: ')
-print('\n >> The mean outcome for each variable in the Information Technology Sector: \n')
-print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].mean()].tolist()[0]])
-print('\n >> The maximum value for each variable in the Information Technology Sector: \n')
-print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].max()].tolist()[0]])
-print('\n >> The minimum value for each variable in the Information Technology Sector: \n')
-print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].min()].tolist()[0]])
-print('\n >> The standard deviation for each variable in the Information Technology Sector: \n')
-print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].std()].tolist()[0]])
-'''
 
 ###############################################################################
 ################################### 2.(b) #####################################
@@ -208,9 +235,9 @@ fig.savefig(Fname2b,      # name (and path) for storing image
             bbox_inches='tight') # remove white space around image
 
 
-print('\n\n===================================================================')
-print('\r==================== Exercise 2 b =================================')
-print("\n\n >> A figure with the name '{}' has been created and\n saved in the device.\n\n".format(Fname2b))
+print('\n\n==========================================================================================================================')
+print('\r================================================== Exercise 2 b ==========================================================')
+print("\n\n >> A figure with the name '{}' has been created and saved in the device.\n\n".format(Fname2b))
 
 ###############################################################################
 ################################### 3.(a) #####################################
@@ -248,9 +275,9 @@ plt.savefig(Fname3a,       # name (and path) for storing image
             dpi = 300,           # image resolution
             bbox_inches='tight') # remove white space around image
 
-print('\n\n===================================================================')
-print('\r==================== Exercise 3 a =================================')
-print("\n\n >> A figure with the name '{}' has been created and\n saved in the device.\n\n".format(Fname3a))
+print('\n\n==========================================================================================================================')
+print('\r================================================== Exercise 3 a ==========================================================')
+print("\n\n >> A figure with the name '{}' has been created and saved in the device.\n\n".format(Fname3a))
 
 ###############################################################################
 ################################### 3.(b) #####################################
@@ -307,9 +334,9 @@ plt.savefig(Fname3b,       # name (and path) for storing image
             dpi = 300,           # image resolution
             bbox_inches='tight') # remove white space around image
 
-print('\n\n===================================================================')
-print('\r==================== Exercise 3 a =================================')
-print("\n\n >> A figure with the name '{}' has been created and\n saved in the device.\n\n".format(Fname3b))
+print('\n\n==========================================================================================================================')
+print('\r================================================== Exercise 3 b ==========================================================')
+print("\n\n >> A figure with the name '{}' has been created and saved in the device.\n\n".format(Fname3b))
 
 ###############################################################################
 ################################### 4.(a) #####################################
@@ -358,8 +385,8 @@ adj_rsq= model.rsquared_adj
 adj_pros =  round(100*adj_rsq,2)
 
 #displaying exercise number
-print('\n\n===================================================================')
-print('\r==================== Exercise 4 a =================================')
+print('\n\n==========================================================================================================================')
+print('\r================================================== Exercise 4 a ==========================================================')
 
 #dispalying exercise solution
 print('\n\n >> Here is an estimate for the regression model: ')
@@ -371,8 +398,8 @@ print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.fo
 ###############################################################################'
 
 #displaying exercise number
-print('\n\n===================================================================')
-print('\r======================== Exercise 4 b =============================')
+print('\n\n==========================================================================================================================')
+print('\r====================================================== Exercise 4 b ======================================================')
 
 #values given in exercise
 #removing hashtags enables dynamic insertion of values
@@ -394,8 +421,8 @@ print('\n\nReturns = {:.5f} (i.e. almost {} %)'.format(returns, returns_pros))
 ###############################################################################
 
 #displaying exercise number
-print('\n\n===================================================================')
-print('\r======================== Exercise 4 c =============================')
+print('\n\n==========================================================================================================================')
+print('\r====================================================== Exercise 4 c ======================================================')
 
 #values given in exercise
 #removing hashtags enables dynamic insertion of values
@@ -416,8 +443,8 @@ print('\n\nReturns = {:.5f} (i.e. almost {} %)'.format(returns, returns_pros))
 ################################### Extra 10 ##################################
 ###############################################################################
 """
-print('\n\n===================================================================')
-print('\r====================== Extra 10 ===================================')
+print('\n\n==========================================================================================================================')
+print('\r=============================================== Extra 10 =================================================================')
 
 
 #values given in exercise
@@ -482,8 +509,8 @@ if " +" in returns_2:
 adj_rsq2= model2.rsquared_adj
 adj_pros2 = 100*adj_rsq2
 #displaying exercise number
-print('\n\n===================================================================')
-print('\r==================== Exercise 5.b.1 ===============================')
+print('\n\n==========================================================================================================================')
+print('\r================================================== Exercise 5.b.1 ========================================================')
 
 #dispalying exercise solution
 print('\n\n >> Here is an estimate for the regression model for Financial Sector: ')
@@ -529,8 +556,8 @@ adj_rsq3= model3.rsquared_adj
 adj_pros3 = 100*adj_rsq3
 
 #displaying exercise number
-print('\n\n===================================================================')
-print('\r==================== Exercise 5.b.2 ===============================')
+print('\n\n==========================================================================================================================')
+print('\r================================================== Exercise 5.b.2 ========================================================')
 
 #dispalying exercise solution
 print('\n\n >> Here is an estimate for the regression model for Industrial Sector: ')
@@ -576,11 +603,11 @@ adj_rsq4= model4.rsquared_adj
 adj_pros4 = 100*adj_rsq4
 
 #displaying exercise number
-print('\n\n===================================================================')
-print('\r==================== Exercise 5.b.3 ===============================')
+print('\n\n==========================================================================================================================')
+print('\r================================================== Exercise 5.b.3 ========================================================')
 
 #dispalying exercise solution
-print('\n\n >> Here is an estimate for the regression model for Information\n Technology Sector: ')
+print('\n\n >> Here is an estimate for the regression model for Information Technology Sector: ')
 print('\nReturns = '+returns_4)
 print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.format(adj_pros4))
 
@@ -589,20 +616,20 @@ print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.fo
 ###############################################################################          
 
 #displaying exercise number
-print('\n\n===================================================================')
-print('\r==================== Exercise 5.b.4 ===============================')
+print('\n\n==========================================================================================================================')
+print('\r================================================== Exercise 5.b.4 ========================================================')
 
 #checking the models to find which one explain more variations
 if adj_rsq2 > adj_rsq or adj_rsq3 > adj_rsq or adj_rsq3 > adj_rsq:
     print('\n\n >>  The first model explained lower variation than the splitted.')
     if adj_rsq2 > adj_rsq:
-     print('\n  >> The data  obtained from Financial Sector explained more variations\n in the dataset than the original data set for three sectors.')
+     print('\n  >> The data  obtained from Financial Sector explained more variations in the dataset than the original data set for three sectors.')
     elif adj_rsq3 > adj_rsq:
-          print('\n >>  The data obtained from Industrial Sector explained more variations\n in the dataset than\n the original data set for three sectors.')
+          print('\n >>  The data obtained from Industrial Sector explained more variations in the dataset than\n the original data set for three sectors.')
     else:
-        print('\n >>  The data obtained from Information Technology Sector explained more\n variations in the dataset than the original data set for three sectors.')
+        print('\n >>  The data obtained from Information Technology Sector explained more variations in the dataset than the original data set for three sectors.')
 else:
-    print('\n\n >>  The data obtained from original data set explained more variations\n than all splitted data sets.')
+    print('\n\n >>  The data obtained from original data set explained more variations than all splitted data sets.')
         
 ###############################################################################
 ################################## 6.(a) ######################################
@@ -628,14 +655,14 @@ def adj_rsqFunc(y,x):
     adj_pros = 100*adj_rsquared
     
     #displaying exercise number
-    print('\n\n===================================================================')
-    print('\r==================== Exercise 6 a =================================')
+    print('\n\n==========================================================================================================================')
+    print('\r================================================== Exercise 6 a ==========================================================')
     
     #dispalying exercise solution
     print('\n\n >> Adjusted r-squared = {:.5f}'.format(adj_rsquared))
     print('\n\n >> The model explains nearly {:.2f} % of the variations in the model.\n\n'.format(adj_pros))
-    print('\n\n====================================================================')
-    print('\r====================================================================\n\n')        
+    print('\n\n===========================================================================================================================')
+    print('\r===========================================================================================================================\n\n')        
         
 adj_rsqFunc(y=y, x=x)
 
@@ -680,8 +707,8 @@ adj_rsq= model.rsquared_adj
 adj_pros =  round(100*adj_rsq,2)
 
 #displaying exercise number
-print('\n\n\n\n===================================================================')
-print('\r======================= Extra 1 ===================================')
+print('\n\n\n\n==========================================================================================================================')
+print('\r===================================================== Extra 1 ============================================================')
 
 #dispalying exercise solution
 print('\n\n >> Here is an estimate for the regression model for only Differentiation: ')
@@ -730,8 +757,8 @@ adj_pros =  round(100*adj_rsq,2)
 
 
 #displaying exercise number
-print('\n\n===================================================================')
-print('\r====================== Extra 2 ====================================')
+print('\n\n==========================================================================================================================')
+print('\r==================================================== Extra 2 =============================================================')
 
 #dispalying exercise solution
 print('\n\n >> Here is an estimate for the regression model for only Cost Leadership: ')
@@ -779,8 +806,8 @@ adj_rsq= model.rsquared_adj
 adj_pros =  round(100*adj_rsq,2)
 
 #displaying exercise number
-print('\n\n===================================================================')
-print('\r====================== Extra 3 ====================================')
+print('\n\n==========================================================================================================================')
+print('\r==================================================== Extra 3 =============================================================')
 
 #dispalying exercise solution
 print('\n\n >> Here is an estimate for the regression model for only Efficiency: ')
@@ -829,8 +856,8 @@ adj_pros =  round(100*adj_rsq,2)
 
 
 #displaying exercise number
-print('\n\n===================================================================')
-print('\r====================== Extra 4 ====================================')
+print('\n\n==========================================================================================================================')
+print('\r==================================================== Extra 4 =============================================================')
 
 #dispalying exercise solution
 print('\n\n >> Here is an estimate for the regression model for only Novelty: ')
@@ -877,11 +904,11 @@ adj_rsq= model.rsquared_adj
 adj_pros =  round(100*adj_rsq,2)
 
 #displaying exercise number
-print('\n\n===================================================================')
-print('\r====================== Extra 5 ====================================')
+print('\n\n==========================================================================================================================')
+print('\r==================================================== Extra 5 =============================================================')
 
 #dispalying exercise solution
-print('\n\n >> Here is an estimate for the regression model with only\n Differentiation and Novelty: ')
+print('\n\n >> Here is an estimate for the regression model with only Differentiation and Novelty: ')
 print('\nReturns = '+returns)
 print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.format(adj_pros))
 
@@ -929,11 +956,11 @@ adj_rsq= model.rsquared_adj
 adj_pros =  round(100*adj_rsq,2)
 
 #displaying exercise number
-print('\n\n===================================================================')
-print('\r====================== Extra 6 ====================================')
+print('\n\n==========================================================================================================================')
+print('\r==================================================== Extra 6 =============================================================')
 
 #dispalying exercise solution
-print('\n\n >> Here is an estimate for the regression model with only Cost\n Leadership and Efficiency: ')
+print('\n\n >> Here is an estimate for the regression model with only Cost Leadership and Efficiency: ')
 print('\nReturns = '+returns)
 print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.format(adj_pros))
 
@@ -1041,9 +1068,9 @@ fig.savefig(FnameE7,      # name (and path) for storing image
             dpi = 300,           # image resolution
             bbox_inches='tight') # remove white space around image
 
-print('\n\n===================================================================')
-print('\r====================== Extra 7 ====================================')
-print("\n\n >> A figure with the name '{}' has been created and\n saved in the device.\n\n".format(FnameE7))
+print('\n\n==========================================================================================================================')
+print('\r==================================================== Extra 7 =============================================================')
+print("\n\n >> A figure with the name '{}' has been created and saved in the device.\n\n".format(FnameE7))
 
 ###############################################################################
 ################################### Extra 8 ###################################
@@ -1062,68 +1089,69 @@ corrEffR= corr_effec
 corrNR =  corr_nov
 
 
-print('\n\n===================================================================')
-print('\r====================== Extra 8 ====================================')
+print('\n\n==========================================================================================================================')
+print('\r==================================================== Extra 8 =============================================================')
 
-print('\n >> Correlation between Differentiation and Returns is: {:.4f}'.format(corrDR))
-print('\n >> Correlation between Cost leadership and Returns is: {:.4f}'.format(corrCLR))
-print('\n >> Correlation between Efficiency and Returns is: {:.4f}'.format(corrEffR))
-print('\n >> Correlation between Novelty and Returns is: {:.4f}'.format(corrNR))
+#print('\n >> Correlation between Differentiation and Returns: {:.4f}'.format(corrDR))
+#print('\n >> Correlation between Cost leadership and Returns: {:.4f}'.format(corrCLR))
+print('\n >> Correlation between Efficiency and Returns: {:.4f}'.format(corrEffR))
+print('\n >> Correlation between Novelty and Returns: {:.4f}'.format(corrNR))
 
-print('\n >> Correlation between Novelty and Differentiation is: {:.4f}'.format(corrND))
-print('\n >> Correlation between Cost leadership and Efficiency is: {:.4f}'.format(corrCE))
-print('\n >> Correlation between Differentiation and Efficiency is: {:.4f}'.format(corrDE))
-print('\n >> Correlation between Differentiation and Cost leadership is: {:.4f}'.format(corrDC))
-print('\n >> Correlation between Novelty and Cost leadership is: {:.4f}'.format(corrNC))
-print('\n >> Correlation between Novelty and Efficiency is: {:.4f}'.format(corrNE))
+#print('\n >> Correlation between Novelty and Differentiation: {:.4f}'.format(corrND))
+#print('\n >> Correlation between Cost leadership and Efficiency: {:.4f}'.format(corrCE))
+#print('\n >> Correlation between Differentiation and Efficiency: {:.4f}'.format(corrDE))
+#print('\n >> Correlation between Differentiation and Cost leadership: {:.4f}'.format(corrDC))
+#print('\n >> Correlation between Novelty and Cost leadership: {:.4f}'.format(corrNC))
+print('\n >> Correlation between Novelty and Efficiency: {:.4f}'.format(corrNE))
       
 
 
 ###############################################################################
 ################################### Extra 9 ###################################
 ###############################################################################
+"""
+print('\n\n==========================================================================================================================')
+print('\r==================================================== Extra 9 =============================================================')
 
-print('\n\n===================================================================')
-print('\r====================== Extra 9 ====================================')
 
 
-
-#displaying descriptive statistics
+#displaying descriptive statistics for IT Sector
 print('\n\n >> Here are descriptive statistics for the data set for IT Sector: ')
 
-print('\n >> The median outcome for returns and associated comapany info and\n strategy details in IT Sector is: \n')
+print('\n >> The median outcome for returns and associated comapany info and strategy details in IT Sector is: \n')
 print(vs_IT.loc[vs_IT.index[vs_IT['returns']==vs_IT['returns'].median()].tolist()[0]])
-print('\n >> The maximum value for returns and associated comapany info and\n strategy details in IT Sector is: \n')
+print('\n >> The maximum value for returns and associated comapany info and strategy details in IT Sector is: \n')
 print(vs_IT.loc[vs_IT.index[vs_IT['returns']==vs_IT['returns'].max()].tolist()[0]])
-print('\n >> The minimum value for returns and associated comapany info and\n strategy details in IT Sector is: \n')
+print('\n >> The minimum value for returns and associated comapany info and strategy details in IT Sector is: \n')
 print(vs_IT.loc[vs_IT.index[vs_IT['returns']==vs_IT['returns'].min()].tolist()[0]])
 
+#displaying descriptive statistics for Finincial Sector
 print('\n\n >> Here are descriptive statistics for the data set for Finincial Sector: ')
 
-print('\n >> The median outcome for returns and associated comapany info and\n strategy details in the Finincial Sector is: \n')
+print('\n >> The median outcome for returns and associated comapany info and strategy details in the Finincial Sector is: \n')
 print(vs_Financials.loc[vs_Financials.index[vs_Financials['returns']==vs_Financials['returns'].median()].tolist()[0]])
-print('\n >> The maximum value for returns and associated comapany info and\n strategy details inFinincial Sector is: \n')
+print('\n >> The maximum value for returns and associated comapany info and strategy details inFinincial Sector is: \n')
 print(vs_Financials.loc[vs_Financials.index[vs_Financials['returns']==vs_Financials['returns'].max()].tolist()[0]])
-print('\n >> The minimum value for returns and associated comapany info and\n strategy details in Finincial Sector is: \n')
+print('\n >> The minimum value for returns and associated comapany info and strategy details in Finincial Sector is: \n')
 print(vs_Financials.loc[vs_Financials.index[vs_Financials['returns']==vs_Financials['returns'].min()].tolist()[0]])
 
-
+#displaying descriptive statistics for Industrial Sector
 print('\n\n >> Here are descriptive statistics for the data set for Industrial Sector: ')
 
-print('\n >> The median outcome for returns and associated comapany info and\n strategy details in Industrial Sectoris: \n')
+print('\n >> The median outcome for returns and associated comapany info and strategy details in Industrial Sectoris: \n')
 print(vs_Industrials.loc[vs_Industrials.index[vs_Industrials['returns']==vs_Industrials['returns'].median()].tolist()[0]])
-print('\n >> The maximum value for returns and associated comapany info and\n strategy details in Industrial Sector is: \n')
+print('\n >> The maximum value for returns and associated comapany info and strategy details in Industrial Sector is: \n')
 print(vs_Industrials.loc[vs_Industrials.index[vs_Industrials['returns']==vs_Industrials['returns'].max()].tolist()[0]])
-print('\n >> The minimum value for returns and associated comapany info and\n strategy details in Industrial Sector is: \n')
+print('\n >> The minimum value for returns and associated comapany info and strategy details in Industrial Sector is: \n')
 print(vs_Industrials.loc[vs_Industrials.index[vs_Industrials['returns']==vs_Industrials['returns'].min()].tolist()[0]])
-
+"""""
 
 ###############################################################################
 ################################### Extra 10 ##################################
 ###############################################################################
 """
-print('\n\n===================================================================')
-print('\r====================== Extra 10 ===================================')
+print('\n\n==========================================================================================================================')
+print('\r==================================================== Extra 10 ============================================================')
 
 
 #values given in exercise
@@ -1188,12 +1216,12 @@ fig.savefig(Fname11,      # name (and path) for storing image
             dpi = 300,           # image resolution
             bbox_inches='tight') # remove white space around image
 
-print('\n\n===================================================================')
-print('\r====================== Extra 11 ===================================')
+print('\n\n==========================================================================================================================')
+print('\r==================================================== Extra 11 ============================================================')
 print("\n\n >> A figure with the name '{}' has been created and saved in the device.".format(Fname11))
 """
-print('\n\n====================================================================')
-print('\r====================================================================\n\n')  
+print('\n\n===========================================================================================================================')
+print('\r===========================================================================================================================\n\n')  
 
 
 
