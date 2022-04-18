@@ -82,17 +82,46 @@ print('\r==================== Exercise 2.a =================================')
 
 #displaying descriptive statistics
 print('\n\n >> Here are descriptive statistics for the data set: ')
-print('\n >> The total number of documented observations for each variable is: \n')
-print(vs_2.count())
-print('\n >> The mean outcome for each variable in the data set is: \n')
-print(vs_2.mean(numeric_only=True))
-print('\n >> The maximum value for each variable in the data set is: \n')
-print(vs_2.max(numeric_only=True))
-print('\n >> The minimum value for each variable in the data set is: \n')
-print(vs_2.min(numeric_only=True))
-print('\n >> The standard deviation for each variable in the data set is: \n')
-print(vs_2.std(numeric_only=True))
+print('\n >> The median outcome for returns and associated comapany info and\n strategy details in the data set is: \n')
+print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].median()].tolist()[0]])
+print('\n >> The maximum value for returns and associated comapany info and\n strategy details in the data set is: \n')
+print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].max()].tolist()[0]])
+print('\n >> The minimum value for returns and associated comapany info and\n strategy details in the data set is: \n')
+print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].min()].tolist()[0]])
 
+
+
+'''
+print('\n\n >> Here are descriptive statistics for the Financial Sector: ')
+print('\n >> The mean outcome for each variable in the Financial Sector: \n')
+print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].mean()].tolist()[0]])
+print('\n >> The maximum value for each variable in the Financial Sector: \n')
+print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].max()].tolist()[0]])
+print('\n >> The minimum value for each variable in the Financial Sector: \n')
+print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].min()].tolist()[0]])
+print('\n >> The standard deviation for each variable in the Financial Sector: \n')
+print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].std()].tolist()[0]])
+
+print('\n\n >> Here are descriptive statistics for the Industrial Sector: ')
+print('\n >> The mean outcome for each variable in the Industrial Sector: \n')
+print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].mean()].tolist()[0]])
+print('\n >> The maximum value for each variable in the Industrial Sector: \n')
+print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].max()].tolist()[0]])
+print('\n >> The minimum value for each variable in the Industrial Sector: \n')
+print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].min()].tolist()[0]])
+print('\n >> The standard deviation for each variable in Industrial Sector: \n')
+print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].std()].tolist()[0]])
+
+print('\n\n >> Here are descriptive statistics for the Information Technology Sector: ')
+print('\n >> The mean outcome for each variable in the Information Technology Sector: \n')
+print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].mean()].tolist()[0]])
+print('\n >> The maximum value for each variable in the Information Technology Sector: \n')
+print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].max()].tolist()[0]])
+print('\n >> The minimum value for each variable in the Information Technology Sector: \n')
+print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].min()].tolist()[0]])
+print('\n >> The standard deviation for each variable in the Information Technology Sector: \n')
+print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].std()].tolist()[0]])
+'''
 
 ###############################################################################
 ################################### 2.(b) #####################################
@@ -368,6 +397,29 @@ returns_pros = round(100*returns,2)
 print('\n\nReturns = {:.5f} (i.e. almost {} %)'.format(returns, returns_pros))
 
 ###############################################################################
+################################### Extra 10 ##################################
+###############################################################################
+"""
+print('\n\n===================================================================')
+print('\r====================== Extra 10 ===================================')
+
+
+#values given in exercise
+#removing hashtags enables dynamic insertion of values
+Differentiation= float(input('Differentiation: '))
+Cost_leadership= float(input('Cost leadership: '))
+Efficiency= float(input('Efficiency: '))
+Novelty= float(input('Novelty: '))
+
+#calculating the returns
+returns = alpha+beta1*Differentiation+beta2*Cost_leadership+beta3*Efficiency\
+    +beta4*Novelty
+returns_pros = round(100*returns,2)
+  
+#dispalying exercise solution
+print('\n\nReturns = {:.5f} (i.e. almost {} %)'.format(returns, returns_pros))
+"""
+###############################################################################
 ################################### 5.(a) #####################################
 ###############################################################################
 
@@ -592,17 +644,11 @@ mod = model.summary()
 # model parameters
 alpha = round(model.params['const'],5)
 beta1 = round(model.params['Differentiation'], 5)
-#beta2 = round(model.params['Cost leadership'], 5)
-#beta3 = round(model.params['Efficiency'], 5)
-#beta4 = round(model.params['Novelty'], 5)
 
 #creating prediction variable for the returns
-pred = model.predict(X)
-values_survey['Pred'] = pred
+pred2 = model.predict(X)
+values_survey['PredDiff'] = pred2
 
-#calculating residuals in the model
-values_survey['Residual'] = values_survey['returns'] - values_survey['Pred']
-res = round(values_survey['Residual'].sum(), 2)
 
 #model regressing equation
 returns = str(alpha)+" +"+str(beta1)+" Differentiation"
@@ -622,7 +668,7 @@ print('\n\n\n\n=================================================================
 print('\r======================= Extra 1 ===================================')
 
 #dispalying exercise solution
-print('\n\n >> Here is an estimate for the regression model: ')
+print('\n\n >> Here is an estimate for the regression model for only Differentiation: ')
 print('\nReturns = '+returns)
 print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.format(adj_pros))
 
@@ -646,18 +692,12 @@ mod = model.summary()
 
 # model parameters
 alpha = round(model.params['const'],5)
-#beta1 = round(model.params['Differentiation'], 5)
 beta2 = round(model.params['Cost leadership'], 5)
-#beta3 = round(model.params['Efficiency'], 5)
-#beta4 = round(model.params['Novelty'], 5)
 
 #creating prediction variable for the returns
-pred = model.predict(X)
-values_survey['Pred'] = pred
+pred3 = model.predict(X)
+values_survey['PredCL'] = pred3
 
-#calculating residuals in the model
-values_survey['Residual'] = values_survey['returns'] - values_survey['Pred']
-res = round(values_survey['Residual'].sum(), 2)
 
 #model regressing equation
 returns = str(alpha)+" +"+str(beta2)+" Cost leadership "
@@ -678,7 +718,7 @@ print('\n\n===================================================================')
 print('\r====================== Extra 2 ====================================')
 
 #dispalying exercise solution
-print('\n\n >> Here is an estimate for the regression model: ')
+print('\n\n >> Here is an estimate for the regression model for only Cost Leadership: ')
 print('\nReturns = '+returns)
 print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.format(adj_pros))
 
@@ -702,18 +742,12 @@ mod = model.summary()
 
 # model parameters
 alpha = round(model.params['const'],5)
-#beta1 = round(model.params['Differentiation'], 5)
-#beta2 = round(model.params['Cost leadership'], 5)
 beta3 = round(model.params['Efficiency'], 5)
-#beta4 = round(model.params['Novelty'], 5)
+
 
 #creating prediction variable for the returns
-pred = model.predict(X)
-values_survey['Pred'] = pred
-
-#calculating residuals in the model
-values_survey['Residual'] = values_survey['returns'] - values_survey['Pred']
-res = round(values_survey['Residual'].sum(), 2)
+pred4 = model.predict(X)
+values_survey['PredEff'] = pred4
 
 #model regressing equation
 returns = str(alpha)+" +"+str(beta3)+" Efficiency "
@@ -733,7 +767,7 @@ print('\n\n===================================================================')
 print('\r====================== Extra 3 ====================================')
 
 #dispalying exercise solution
-print('\n\n >> Here is an estimate for the regression model: ')
+print('\n\n >> Here is an estimate for the regression model for only Efficiency: ')
 print('\nReturns = '+returns)
 print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.format(adj_pros))
 
@@ -757,18 +791,11 @@ mod = model.summary()
 
 # model parameters
 alpha = round(model.params['const'],5)
-#beta1 = round(model.params['Differentiation'], 5)
-#beta2 = round(model.params['Cost leadership'], 5)
-#beta3 = round(model.params['Efficiency'], 5)
 beta4 = round(model.params['Novelty'], 5)
 
 #creating prediction variable for the returns
-pred = model.predict(X)
-values_survey['Pred'] = pred
-
-#calculating residuals in the model
-values_survey['Residual'] = values_survey['returns'] - values_survey['Pred']
-res = round(values_survey['Residual'].sum(), 2)
+pred5 = model.predict(X)
+values_survey['PredNov'] = pred5
 
 #model regressing equation
 returns = str(alpha)+" +"+str(beta4)+" Novelty"
@@ -790,12 +817,112 @@ print('\n\n===================================================================')
 print('\r====================== Extra 4 ====================================')
 
 #dispalying exercise solution
-print('\n\n >> Here is an estimate for the regression model: ')
+print('\n\n >> Here is an estimate for the regression model for only Novelty: ')
 print('\nReturns = '+returns)
 print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.format(adj_pros))
 
 ###############################################################################
 ################################### Extra 5 ###################################
+###############################################################################
+
+#assigning column(s) to variables
+X = values_survey[['Differentiation', 'Cost leadership','Efficiency', 'Novelty']] 
+Y = values_survey['returns']
+
+# add constant
+X = sm.add_constant(X) 
+
+# fit model
+model = sm.OLS(Y, X).fit()
+
+# model summary
+mod = model.summary()
+
+# model parameters
+alpha = round(model.params['const'],5)
+beta1 = round(model.params['Differentiation'], 5)
+beta4 = round(model.params['Novelty'], 5)
+
+#creating prediction variable for the returns
+pred6 = model.predict(X)
+values_survey['PredDN'] = pred6
+
+#model regressing equation
+returns = str(alpha)+" +"+str(beta1)+" Differentiation  +"+str(beta4)+" Novelty"
+ 
+#modifying regression equation   
+if "+-" in returns:
+    returns= returns.replace("+-", "- ")
+if " +" in returns:
+    returns= returns.replace(" +", " + ")
+
+#obtaining adjusted r-squared for the model
+adj_rsq= model.rsquared_adj
+adj_pros =  round(100*adj_rsq,2)
+
+#displaying exercise number
+print('\n\n===================================================================')
+print('\r====================== Extra 5 ====================================')
+
+#dispalying exercise solution
+print('\n\n >> Here is an estimate for the regression model with only\n Differentiation and Novelty: ')
+print('\nReturns = '+returns)
+print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.format(adj_pros))
+
+###############################################################################
+################################### Extra 6 ###################################
+###############################################################################
+
+#assigning column(s) to variables
+X = values_survey[['Cost leadership','Efficiency']] 
+Y = values_survey['returns']
+
+# add constant
+X = sm.add_constant(X) 
+
+# fit model
+model = sm.OLS(Y, X).fit()
+
+# model summary
+mod = model.summary()
+
+# model parameters
+alpha = round(model.params['const'],5)
+beta2 = round(model.params['Cost leadership'], 5)
+beta3 = round(model.params['Efficiency'], 5)
+
+#creating prediction variable for the returns
+pred7 = model.predict(X)
+values_survey['PredCLEFF'] = pred7
+
+#calculating residuals in the model
+values_survey['Residual'] = values_survey['returns'] - values_survey['Pred']
+res = round(values_survey['Residual'].sum(), 2)
+
+#model regressing equation
+returns = str(alpha)+" +"+str(beta2)+" Cost leadership +"+str(beta3)+" Efficiency"
+ 
+#modifying regression equation   
+if "+-" in returns:
+    returns= returns.replace("+-", "- ")
+if " +" in returns:
+    returns= returns.replace(" +", " + ")
+
+#obtaining adjusted r-squared for the model
+adj_rsq= model.rsquared_adj
+adj_pros =  round(100*adj_rsq,2)
+
+#displaying exercise number
+print('\n\n===================================================================')
+print('\r====================== Extra 6 ====================================')
+
+#dispalying exercise solution
+print('\n\n >> Here is an estimate for the regression model with only Cost\n Leadership and Efficiency: ')
+print('\nReturns = '+returns)
+print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.format(adj_pros))
+
+###############################################################################
+################################### Extra 7 ###################################
 ###############################################################################
 
 #storing dataframe's columns in variables
@@ -804,7 +931,10 @@ X1= values_survey['Differentiation']
 X2= values_survey['Cost leadership']
 X3= values_survey['Efficiency']
 X4= values_survey['Novelty']
-P = values_survey['Pred'].dropna()
+P2 = values_survey['PredDiff'].dropna()
+P3 = values_survey['PredCL'].dropna()
+P4 = values_survey['PredEff'].dropna()
+P5 = values_survey['PredNov'].dropna()
 
 #finding the correlation for variables
 corr_def = values_survey.corr().loc['returns', 'Differentiation']
@@ -817,30 +947,34 @@ fig, ax = plt.subplots(nrows = 2, ncols = 2, figsize = (18, 12))
 
 
 # plot subplots
-ax[0, 0].scatter(X1, Y,
-           marker = ".",
-           s = 40, 
+ax[0, 0].scatter(X1, Y, label = 'Actual Y', 
+           marker = '.', 
+           s = 40,
+           zorder = 2,
            color = 'green')
-ax[0, 1].scatter(X2,Y,
-                 marker = ".",
-                 s = 40, 
+ax[0, 1].scatter(X2,Y, label = 'Actual Y', 
+           marker = '.', 
+           s = 40,
+           zorder = 2, 
                  color = 'blue')
-ax[1, 0].scatter(X3, Y, 
-                 marker = ".",
-                 s = 40, 
+ax[1, 0].scatter(X3, Y, label = 'Actual Y', 
+           marker = '.', 
+           s = 40,
+           zorder = 2, 
                  color = 'purple')
-ax[1, 1].scatter(X4, Y,
-                 marker = ".",
-                 s = 40, 
+ax[1, 1].scatter(X4, Y, label = 'Actual Y', 
+           marker = '.', 
+           s = 40,
+           zorder = 2,
                  color = 'red')
-ax[0, 0].plot(X1, P,
-           color = 'black')
-ax[0, 1].plot(X2, P,
-                 color = 'black')
-ax[1, 0].plot(X3, P, 
-                 color = 'black')
-ax[1, 1].plot(X4, P,
-                 color = 'black')
+ax[0, 0].plot(X1, P2, label = 'Predicted Y', 
+        color = 'black')
+ax[0, 1].plot(X2, P3, label = 'Predicted Y', 
+        color = 'black')
+ax[1, 0].plot(X3, P4,  label = 'Predicted Y', 
+        color = 'black')
+ax[1, 1].plot(X4, P5, label = 'Predicted Y', 
+        color = 'black')
 
 
 # set y-axis labels
@@ -881,19 +1015,132 @@ ax[0,0].spines[['right', 'top']].set_visible(False)
 ax[0,1].spines[['right', 'top']].set_visible(False)
 ax[1,0].spines[['right', 'top']].set_visible(False)
 ax[1,1].spines[['right', 'top']].set_visible(False)
+
+# add legend for only the three first labels
+#ax.legend(loc = 'upper right')
            
 # save figure
-fig.savefig('E5_predictVS.png',      # name (and path) for storing image
+fig.savefig('E7_predictVS.png',      # name (and path) for storing image
             dpi = 300,           # image resolution
             bbox_inches='tight') # remove white space around image
 
+###############################################################################
+################################### Extra 8 ###################################
+###############################################################################
 
-print('\n\n====================================================================')
-print('\r====================================================================\n\n')        
+corrND = values_survey.corr().loc['Novelty', 'Differentiation']
+corrCE = values_survey.corr().loc['Cost leadership', 'Efficiency']
+corrDE = values_survey.corr().loc['Differentiation', 'Efficiency']
+corrDC = values_survey.corr().loc['Differentiation', 'Cost leadership']
+corrNC = values_survey.corr().loc['Novelty', 'Cost leadership']
+corrNE= values_survey.corr().loc['Novelty', 'Efficiency']
+
+print('\n\n===================================================================')
+print('\r====================== Extra 8 ====================================')
+
+print('\nCorrelation between Novelty and Differentiation is: {:.4f}'.format(corrND))
+print('\nCorrelation between Cost leadership and Efficiency is: {:.4f}'.format(corrCE))
+print('\nCorrelation between Differentiation and Efficiency is: {:.4f}'.format(corrDE))
+print('\nCorrelation between Differentiation and Cost leadership is: {:.4f}'.format(corrDC))
+print('\nCorrelation between Novelty and Cost leadership is: {:.4f}'.format(corrNC))
+print('\nCorrelation between Novelty and Efficiency is: {:.4f}'.format(corrNE))
       
 
 
+###############################################################################
+################################### Extra 9 ###################################
+###############################################################################
+
+print('\n\n===================================================================')
+print('\r====================== Extra 9 ====================================')
 
 
+
+#displaying descriptive statistics
+print('\n\n >> Here are descriptive statistics for the data set for IT Sector: ')
+
+print('\n >> The median outcome for returns and associated comapany info and\n strategy details in IT Sector is: \n')
+print(vs_IT.loc[vs_IT.index[vs_IT['returns']==vs_IT['returns'].median()].tolist()[0]])
+print('\n >> The maximum value for returns and associated comapany info and\n strategy details in IT Sector is: \n')
+print(vs_IT.loc[vs_IT.index[vs_IT['returns']==vs_IT['returns'].max()].tolist()[0]])
+print('\n >> The minimum value for returns and associated comapany info and\n strategy details in IT Sector is: \n')
+print(vs_IT.loc[vs_IT.index[vs_IT['returns']==vs_IT['returns'].min()].tolist()[0]])
+
+print('\n\n >> Here are descriptive statistics for the data set for Finincial Sector: ')
+
+print('\n >> The median outcome for returns and associated comapany info and\n strategy details in the Finincial Sector is: \n')
+print(vs_Financials.loc[vs_Financials.index[vs_Financials['returns']==vs_Financials['returns'].median()].tolist()[0]])
+print('\n >> The maximum value for returns and associated comapany info and\n strategy details inFinincial Sector is: \n')
+print(vs_Financials.loc[vs_Financials.index[vs_Financials['returns']==vs_Financials['returns'].max()].tolist()[0]])
+print('\n >> The minimum value for returns and associated comapany info and\n strategy details in Finincial Sector is: \n')
+print(vs_Financials.loc[vs_Financials.index[vs_Financials['returns']==vs_Financials['returns'].min()].tolist()[0]])
+
+
+print('\n\n >> Here are descriptive statistics for the data set for Industrial Sector: ')
+
+print('\n >> The median outcome for returns and associated comapany info and\n strategy details in Industrial Sectoris: \n')
+print(vs_Industrials.loc[vs_Industrials.index[vs_Industrials['returns']==vs_Industrials['returns'].median()].tolist()[0]])
+print('\n >> The maximum value for returns and associated comapany info and\n strategy details in Industrial Sector is: \n')
+print(vs_Industrials.loc[vs_Industrials.index[vs_Industrials['returns']==vs_Industrials['returns'].max()].tolist()[0]])
+print('\n >> The minimum value for returns and associated comapany info and\n strategy details in Industrial Sector is: \n')
+print(vs_Industrials.loc[vs_Industrials.index[vs_Industrials['returns']==vs_Industrials['returns'].min()].tolist()[0]])
+
+
+###############################################################################
+################################### Extra 9 ###################################
+###############################################################################
+"""
+print('\n\n===================================================================')
+print('\r====================== Extra 10 ===================================')
+
+
+#values given in exercise
+#removing hashtags enables dynamic insertion of values
+Differentiation= float(input('Differentiation: '))
+Cost_leadership= float(input('Cost leadership: '))
+Efficiency= float(input('Efficiency: '))
+Novelty= float(input('Novelty: '))
+
+#calculating the returns
+returns = alpha+beta1*Differentiation+beta2*Cost_leadership+beta3*Efficiency\
+    +beta4*Novelty
+returns_pros = round(100*returns,2)
+  
+#dispalying exercise solution
+print('\n\nReturns = {:.5f} (i.e. almost {} %)'.format(returns, returns_pros))
+"""
+print('\n\n====================================================================')
+print('\r====================================================================\n\n')  
+
+
+
+
+
+
+"""
+vs_IT['returns'].min()
+Out[461]: -0.020098115137315742
+
+vs_IT.index[vs_IT['returns']==vs_IT['returns'].min()].tolist()
+Out[462]: [114]
+
+vs_IT.loc[114]
+Out[463]: 
+Symbol                               LRCX
+Name_x                       Lam Research
+Sector             Information Technology
+FirmV2017                    81132.090092
+FirmV2022                      73300.2793
+Name_y                       Lam Research
+Differentiation                 76.305889
+Cost leadership                 39.824106
+Efficiency                      43.873067
+Novelty                         70.543559
+returns                         -0.020098
+Pred                             0.160811
+Residual                         -0.18091
+Name: 114, dtype: object
+vs_IT.loc[vs_IT.index[vs_IT['returns']==vs_IT['returns'].min()].tolist()[0]]
+"""
 
 
