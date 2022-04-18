@@ -33,6 +33,9 @@ survey = pd.read_csv('sp500_survey.csv')
 #merging the two data sets together
 values_survey = values.merge(survey, on = 'Symbol', how = 'outer')
 
+#removing the column from the dataframe as another column have similar content
+values_survey.drop('Name_y', axis=1, inplace= True)
+
 ###############################################################################
 ################################### 1.(d) #####################################
 ###############################################################################
@@ -64,6 +67,9 @@ vs_2 = values.merge(survey, on = 'Symbol', how = 'outer')
 
 #removing empty cells from newly merged dataframe
 vs_2.dropna(inplace= True)
+
+#removing the column from the dataframe as another column have similar content
+vs_2.drop('Name_y', axis=1, inplace= True)
 
 #list to store calculated returns values
 vs_returns= []
@@ -118,18 +124,18 @@ print('\n >> The minimum value for returns and associated comapany info and stra
 print(vs_IT.loc[vs_IT.index[vs_IT['returns']==vs_IT['returns'].min()].tolist()[0]])
 
 #displaying descriptive statistics for Finincial Sector
-print('\n\n >> Here are descriptive statistics for the data set for Finincial Sector: ')
+print('\n\n >> Here are descriptive statistics for the data set for Financial Sector: ')
 
-print('\n >> The total number of companies sampled from Finincial Sector in the data set is: \n')
+print('\n >> The total number of companies sampled from Financial Sector in the data set is: \n')
 print(" "+str(vs_Financials['returns'].count())+ " Companies")
 print('\n >> The average outcome for the returns in the Finicial Sector based on the whole data set is: \n')
 print(" "+str(round(100*vs_Financials['returns'].mean()))+ " %")
-print('\n However, no company in the Finicial Sector had precisely gained this mean outcome for the returns based on this sample.\n')
-print('\n >> The median outcome for returns and associated comapany info and strategy details in the Finincial Sector is: \n')
+print('\n However, no company in the Financial Sector had precisely gained this mean outcome for the returns based on this sample.\n')
+print('\n >> The median outcome for returns and associated comapany info and strategy details in the Financial Sector is: \n')
 print(vs_Financials.loc[vs_Financials.index[vs_Financials['returns']==vs_Financials['returns'].median()].tolist()[0]])
-print('\n >> The maximum value for returns and associated comapany info and strategy details inFinincial Sector is: \n')
+print('\n >> The maximum value for returns and associated comapany info and strategy details in Financial Sector is: \n')
 print(vs_Financials.loc[vs_Financials.index[vs_Financials['returns']==vs_Financials['returns'].max()].tolist()[0]])
-print('\n >> The minimum value for returns and associated comapany info and strategy details in Finincial Sector is: \n')
+print('\n >> The minimum value for returns and associated comapany info and strategy details in Financial Sector is: \n')
 print(vs_Financials.loc[vs_Financials.index[vs_Financials['returns']==vs_Financials['returns'].min()].tolist()[0]])
 
 #displaying descriptive statistics for Industrial Sector
@@ -244,16 +250,18 @@ print("\n\n >> A figure with the name '{}' has been created and saved in the dev
 ###############################################################################
 
 #sector names
-x= values_survey['Sector'].unique()
+
+x_sec= sorted(values_survey['Sector'].unique().tolist(), key=len)
 
 #returns in percentage for different sectors
-y = round(100*values_survey.groupby(['Sector'])['returns'].mean(),2)
+y_sec = round(100*values_survey.groupby(['Sector'])['returns'].mean(),2)
+
 
 # create figure and subplots
 fig, ax = plt.subplots()
 
 #plot subplots
-ax.bar(x, y, 0.5, 
+ax.bar(x_sec, y_sec, 0.5, 
        facecolor = 'lightblue', 
        edgecolor = 'blue', 
        alpha = 1,
@@ -268,6 +276,7 @@ ax.set_title("Average sectors' returns", fontsize = 24)
 
 # hide the right and top spines
 ax.spines[['right', 'top']].set_visible(False)
+
 
 # save figure
 Fname3a= '3a_barSectors.png'
