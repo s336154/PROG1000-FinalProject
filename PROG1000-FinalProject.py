@@ -761,3 +761,459 @@ def adj_rsqFunc(y, x):
 
 
 adj_rsqFunc(y=y, x=x)
+
+###############################################################################
+################################### Extra 1 ###################################
+###############################################################################
+
+# assigning column(s) to variables
+X = values_survey['Differentiation']
+Y = values_survey['returns']
+
+# add constant
+X = sm.add_constant(X)
+
+# fit model
+model = sm.OLS(Y, X).fit()
+
+# model summary
+mod = model.summary()
+
+# model parameters
+alpha = round(model.params['const'], 5)
+beta1 = round(model.params['Differentiation'], 5)
+
+# creating prediction variable for the returns
+pred2 = model.predict(X)
+values_survey['PredDiff'] = pred2
+
+# model regressing equation
+returns = str(alpha) + " +" + str(beta1) + " Differentiation"
+
+# modifying regression equation
+if "+-" in returns:
+    returns = returns.replace("+-", "- ")
+if " +" in returns:
+    returns = returns.replace(" +", " + ")
+
+# obtaining adjusted r-squared for the model
+adj_rsq = model.rsquared_adj
+adj_pros = round(100 * adj_rsq, 2)
+
+# displaying exercise number
+print(
+    '\n\n\n\n==========================================================================================================================')
+print(
+    '\r===================================================== Extra 1 ============================================================')
+
+# dispalying exercise solution
+print('\n\n >> Here is an estimate for the regression model for only Differentiation: ')
+print('\nReturns = ' + returns)
+print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.format(adj_pros))
+
+###############################################################################
+################################### Extra 2 ###################################
+###############################################################################
+
+# assigning column(s) to variables
+X = values_survey['Cost leadership']
+Y = values_survey['returns']
+
+# add constant
+X = sm.add_constant(X)
+
+# fit model
+model = sm.OLS(Y, X).fit()
+
+# model summary
+mod = model.summary()
+
+# model parameters
+alpha = round(model.params['const'], 5)
+beta2 = round(model.params['Cost leadership'], 5)
+
+# creating prediction variable for the returns
+pred3 = model.predict(X)
+values_survey['PredCL'] = pred3
+
+# model regressing equation
+returns = str(alpha) + " +" + str(beta2) + " Cost leadership "
+
+# modifying regression equation
+if "+-" in returns:
+    returns = returns.replace("+-", "- ")
+if " +" in returns:
+    returns = returns.replace(" +", " + ")
+
+# obtaining adjusted r-squared for the model
+adj_rsq = model.rsquared_adj
+adj_pros = round(100 * adj_rsq, 2)
+
+# displaying exercise number
+print(
+    '\n\n==========================================================================================================================')
+print(
+    '\r==================================================== Extra 2 =============================================================')
+
+# dispalying exercise solution
+print('\n\n >> Here is an estimate for the regression model for only Cost Leadership: ')
+print('\nReturns = ' + returns)
+print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.format(adj_pros))
+
+###############################################################################
+################################### Extra 3 ###################################
+###############################################################################
+
+# assigning column(s) to variables
+X = values_survey['Efficiency']
+Y = values_survey['returns']
+
+# add constant
+X = sm.add_constant(X)
+
+# fit model
+model = sm.OLS(Y, X).fit()
+
+# model summary
+mod = model.summary()
+
+# model parameters
+alpha = round(model.params['const'], 5)
+beta3 = round(model.params['Efficiency'], 5)
+
+# creating prediction variable for the returns
+pred4 = model.predict(X)
+values_survey['PredEff'] = pred4
+
+# model regressing equation
+returns = str(alpha) + " +" + str(beta3) + " Efficiency "
+
+# modifying regression equation
+if "+-" in returns:
+    returns = returns.replace("+-", "- ")
+if " +" in returns:
+    returns = returns.replace(" +", " + ")
+
+# obtaining adjusted r-squared for the model
+adj_rsq = model.rsquared_adj
+adj_pros = round(100 * adj_rsq, 2)
+
+# displaying exercise number
+print(
+    '\n\n==========================================================================================================================')
+print(
+    '\r==================================================== Extra 3 =============================================================')
+
+# dispalying exercise solution
+print('\n\n >> Here is an estimate for the regression model for only Efficiency: ')
+print('\nReturns = ' + returns)
+print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.format(adj_pros))
+
+###############################################################################
+################################### Extra 4 ###################################
+###############################################################################
+
+# assigning column(s) to variables
+X = values_survey['Novelty']
+Y = values_survey['returns']
+
+# add constant
+X = sm.add_constant(X)
+
+# fit model
+model = sm.OLS(Y, X).fit()
+
+# model summary
+mod = model.summary()
+
+# model parameters
+alpha = round(model.params['const'], 5)
+beta4 = round(model.params['Novelty'], 5)
+
+# creating prediction variable for the returns
+pred5 = model.predict(X)
+values_survey['PredNov'] = pred5
+
+# model regressing equation
+returns = str(alpha) + " +" + str(beta4) + " Novelty"
+
+# modifying regression equation
+if "+-" in returns:
+    returns = returns.replace("+-", "- ")
+if " +" in returns:
+    returns = returns.replace(" +", " + ")
+
+# obtaining adjusted r-squared for the model
+adj_rsq = model.rsquared_adj
+adj_pros = round(100 * adj_rsq, 2)
+
+# displaying exercise number
+print(
+    '\n\n==========================================================================================================================')
+print(
+    '\r==================================================== Extra 4 =============================================================')
+
+# dispalying exercise solution
+print('\n\n >> Here is an estimate for the regression model for only Novelty: ')
+print('\nReturns = ' + returns)
+print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.format(adj_pros))
+
+###############################################################################
+################################### Extra 5 ###################################
+###############################################################################
+
+# assigning column(s) to variables
+X = values_survey[['Differentiation', 'Cost leadership', 'Efficiency', 'Novelty']]
+Y = values_survey['returns']
+
+# add constant
+X = sm.add_constant(X)
+
+# fit model
+model = sm.OLS(Y, X).fit()
+
+# model summary
+mod = model.summary()
+
+# model parameters
+alpha = round(model.params['const'], 5)
+beta1 = round(model.params['Differentiation'], 5)
+beta4 = round(model.params['Novelty'], 5)
+
+# creating prediction variable for the returns
+pred6 = model.predict(X)
+values_survey['PredDN'] = pred6
+
+# model regressing equation
+returns = str(alpha) + " +" + str(beta1) + " Differentiation  +" + str(beta4) + " Novelty"
+
+# modifying regression equation
+if "+-" in returns:
+    returns = returns.replace("+-", "- ")
+if " +" in returns:
+    returns = returns.replace(" +", " + ")
+
+# obtaining adjusted r-squared for the model
+adj_rsq = model.rsquared_adj
+adj_pros = round(100 * adj_rsq, 2)
+
+# displaying exercise number
+print(
+    '\n\n==========================================================================================================================')
+print(
+    '\r==================================================== Extra 5 =============================================================')
+
+# dispalying exercise solution
+print('\n\n >> Here is an estimate for the regression model with only Differentiation and Novelty: ')
+print('\nReturns = ' + returns)
+print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.format(adj_pros))
+
+###############################################################################
+################################### Extra 6 ###################################
+###############################################################################
+
+# assigning column(s) to variables
+X = values_survey[['Cost leadership', 'Efficiency']]
+Y = values_survey['returns']
+
+# add constant
+X = sm.add_constant(X)
+
+# fit model
+model = sm.OLS(Y, X).fit()
+
+# model summary
+mod = model.summary()
+
+# model parameters
+alpha = round(model.params['const'], 5)
+beta2 = round(model.params['Cost leadership'], 5)
+beta3 = round(model.params['Efficiency'], 5)
+
+# creating prediction variable for the returns
+pred7 = model.predict(X)
+values_survey['PredCLEFF'] = pred7
+
+# calculating residuals in the model
+values_survey['Residual'] = values_survey['returns'] - values_survey['Pred']
+res = round(values_survey['Residual'].sum(), 2)
+
+# model regressing equation
+returns = str(alpha) + " +" + str(beta2) + " Cost leadership +" + str(beta3) + " Efficiency"
+
+# modifying regression equation
+if "+-" in returns:
+    returns = returns.replace("+-", "- ")
+if " +" in returns:
+    returns = returns.replace(" +", " + ")
+
+# obtaining adjusted r-squared for the model
+adj_rsq = model.rsquared_adj
+adj_pros = round(100 * adj_rsq, 2)
+
+# displaying exercise number
+print(
+    '\n\n==========================================================================================================================')
+print(
+    '\r==================================================== Extra 6 =============================================================')
+
+# dispalying exercise solution
+print('\n\n >> Here is an estimate for the regression model with only Cost Leadership and Efficiency: ')
+print('\nReturns = ' + returns)
+print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.format(adj_pros))
+
+###############################################################################
+################################### Extra 7 ###################################
+###############################################################################
+
+# storing dataframe's columns in variables
+Y = values_survey['returns']
+X1 = values_survey['Differentiation']
+X2 = values_survey['Cost leadership']
+X3 = values_survey['Efficiency']
+X4 = values_survey['Novelty']
+P2 = values_survey['PredDiff'].dropna()
+P3 = values_survey['PredCL'].dropna()
+P4 = values_survey['PredEff'].dropna()
+P5 = values_survey['PredNov'].dropna()
+
+# finding the correlation for variables
+corr_def = values_survey.corr().loc['returns', 'Differentiation']
+corr_cosled = values_survey.corr().loc['returns', 'Cost leadership']
+corr_effec = values_survey.corr().loc['returns', 'Efficiency']
+corr_nov = values_survey.corr().loc['returns', 'Novelty']
+
+# create figure and subplots
+fig, ax = plt.subplots(nrows=2, ncols=2, figsize=(18, 12))
+
+# plot subplots
+ax[0, 0].scatter(X1, Y, label='Returns',
+                 marker='.',
+                 s=40,
+                 zorder=2,
+                 color='green')
+ax[0, 1].scatter(X2, Y, label='Returns',
+                 marker='.',
+                 s=40,
+                 zorder=2,
+                 color='blue')
+ax[1, 0].scatter(X3, Y, label='Returns',
+                 marker='.',
+                 s=40,
+                 zorder=2,
+                 color='purple')
+ax[1, 1].scatter(X4, Y, label='Returns',
+                 marker='.',
+                 s=40,
+                 zorder=2,
+                 color='red')
+ax[0, 0].plot(X1, P2, label='Forecast',
+              color='black')
+ax[0, 1].plot(X2, P3, label='Forecast',
+              color='black')
+ax[1, 0].plot(X3, P4, label='Forecast',
+              color='black')
+ax[1, 1].plot(X4, P5, label='Forecast',
+              color='black')
+
+# set y-axis labels
+ax[0, 0].set_ylabel('Returns', fontsize=17)
+ax[1, 0].set_ylabel('Returns', fontsize=17)
+ax[0, 1].set_ylabel('Returns', fontsize=17)
+ax[1, 1].set_ylabel('Returns', fontsize=17)
+
+# set x-axis labels
+ax[0, 0].set_xlabel('Differentiation', fontsize=17)
+ax[0, 1].set_xlabel('Cost Leadership', fontsize=17)
+ax[1, 0].set_xlabel('Efficiency', fontsize=17)
+ax[1, 1].set_xlabel('Novelty', fontsize=17)
+
+# set y-axis range
+ax[0, 0].set_ylim(min(Y), max(Y))
+ax[1, 0].set_ylim(min(Y), max(Y))
+ax[0, 1].set_ylim(min(Y), max(Y))
+ax[1, 1].set_ylim(min(Y), max(Y))
+
+# set x-axis range
+ax[0, 0].set_xlim(min(X1), max(X1))
+ax[0, 1].set_xlim(min(X2), max(X2))
+ax[1, 0].set_xlim(min(X3), max(X3))
+ax[1, 1].set_xlim(min(X4), max(X4))
+
+# add legends
+ax[0, 0].legend()
+ax[0, 1].legend()
+ax[1, 0].legend()
+ax[1, 1].legend()
+
+# add title to figure
+fig.suptitle('Strategies and Returns', fontsize=30)
+
+# add subplot title
+ax[0, 0].set_title('r = ' + str(round(corr_def, 2)))
+ax[0, 1].set_title('r = ' + str(round(corr_cosled, 2)))
+ax[1, 0].set_title('r = ' + str(round(corr_effec, 2)))
+ax[1, 1].set_title('r = ' + str(round(corr_nov, 2)))
+
+# hide the right and top spines
+ax[0, 0].spines[['right', 'top']].set_visible(False)
+ax[0, 1].spines[['right', 'top']].set_visible(False)
+ax[1, 0].spines[['right', 'top']].set_visible(False)
+ax[1, 1].spines[['right', 'top']].set_visible(False)
+
+# add legend for only the three first labels
+# ax.legend(loc = 'upper right')
+
+# save figure
+FnameE7 = 'E7_predictVS.png'
+fig.savefig(FnameE7,  # name (and path) for storing image
+            dpi=300,  # image resolution
+            bbox_inches='tight')  # remove white space around image
+
+# displaying info
+print(
+    '\n\n==========================================================================================================================')
+print(
+    '\r==================================================== Extra 7 =============================================================')
+print("\n\n >> A figure with the name '{}' has been created and saved in the device.\n\n".format(FnameE7))
+
+###############################################################################
+################################### Extra 8 ###################################
+###############################################################################
+
+# assiging variable to correlation values
+corrND = values_survey.corr().loc['Novelty', 'Differentiation']
+corrCE = values_survey.corr().loc['Cost leadership', 'Efficiency']
+corrDE = values_survey.corr().loc['Differentiation', 'Efficiency']
+corrDC = values_survey.corr().loc['Differentiation', 'Cost leadership']
+corrNC = values_survey.corr().loc['Novelty', 'Cost leadership']
+corrNE = values_survey.corr().loc['Novelty', 'Efficiency']
+
+# assiging variable to perviously found correlation values
+corrDR = corr_def
+corrCLR = corr_cosled
+corrEffR = corr_effec
+corrNR = corr_nov
+
+# dispalying results
+print(
+    '\n\n==========================================================================================================================')
+print(
+    '\r==================================================== Extra 8 =============================================================')
+
+print('\n >> Correlation between Differentiation and Returns: {:.4f}'.format(corrDR))
+print('\n >> Correlation between Cost leadership and Returns: {:.4f}'.format(corrCLR))
+print('\n >> Correlation between Efficiency and Returns: {:.4f}'.format(corrEffR))
+print('\n >> Correlation between Novelty and Returns: {:.4f}'.format(corrNR))
+
+print('\n >> Correlation between Novelty and Differentiation: {:.4f}'.format(corrND))
+print('\n >> Correlation between Cost leadership and Efficiency: {:.4f}'.format(corrCE))
+print('\n >> Correlation between Differentiation and Efficiency: {:.4f}'.format(corrDE))
+print('\n >> Correlation between Differentiation and Cost leadership: {:.4f}'.format(corrDC))
+print('\n >> Correlation between Novelty and Cost leadership: {:.4f}'.format(corrNC))
+print('\n >> Correlation between Novelty and Efficiency: {:.4f}'.format(corrNE))
+
+print('\n\n===========================================================================================================================')
+print('\r===========================================================================================================================\n\n')
+
+
