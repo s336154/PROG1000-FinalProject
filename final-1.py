@@ -1125,6 +1125,7 @@ fig.savefig(FnameE7,      # name (and path) for storing image
             dpi = 300,           # image resolution
             bbox_inches='tight') # remove white space around image
 
+#displaying info
 print('\n\n==========================================================================================================================')
 print('\r==================================================== Extra 7 =============================================================')
 print("\n\n >> A figure with the name '{}' has been created and saved in the device.\n\n".format(FnameE7))
@@ -1133,6 +1134,7 @@ print("\n\n >> A figure with the name '{}' has been created and saved in the dev
 ################################### Extra 8 ###################################
 ###############################################################################
 
+#assiging variable to correlation values
 corrND = values_survey.corr().loc['Novelty', 'Differentiation']
 corrCE = values_survey.corr().loc['Cost leadership', 'Efficiency']
 corrDE = values_survey.corr().loc['Differentiation', 'Efficiency']
@@ -1140,26 +1142,27 @@ corrDC = values_survey.corr().loc['Differentiation', 'Cost leadership']
 corrNC = values_survey.corr().loc['Novelty', 'Cost leadership']
 corrNE= values_survey.corr().loc['Novelty', 'Efficiency']
 
+#assiging variable to perviously found correlation values
 corrDR = corr_def
 corrCLR = corr_cosled
 corrEffR= corr_effec
 corrNR =  corr_nov
 
-
+#dispalying results
 print('\n\n==========================================================================================================================')
 print('\r==================================================== Extra 8 =============================================================')
 
 print('\n >> Correlation between Differentiation and Returns: {:.4f}'.format(corrDR))
 print('\n >> Correlation between Cost leadership and Returns: {:.4f}'.format(corrCLR))
-#print('\n >> Correlation between Efficiency and Returns: {:.4f}'.format(corrEffR))
-#print('\n >> Correlation between Novelty and Returns: {:.4f}'.format(corrNR))
+print('\n >> Correlation between Efficiency and Returns: {:.4f}'.format(corrEffR))
+print('\n >> Correlation between Novelty and Returns: {:.4f}'.format(corrNR))
 
-#print('\n >> Correlation between Novelty and Differentiation: {:.4f}'.format(corrND))
-#print('\n >> Correlation between Cost leadership and Efficiency: {:.4f}'.format(corrCE))
-#print('\n >> Correlation between Differentiation and Efficiency: {:.4f}'.format(corrDE))
+print('\n >> Correlation between Novelty and Differentiation: {:.4f}'.format(corrND))
+print('\n >> Correlation between Cost leadership and Efficiency: {:.4f}'.format(corrCE))
+print('\n >> Correlation between Differentiation and Efficiency: {:.4f}'.format(corrDE))
 print('\n >> Correlation between Differentiation and Cost leadership: {:.4f}'.format(corrDC))
-#print('\n >> Correlation between Novelty and Cost leadership: {:.4f}'.format(corrNC))
-#print('\n >> Correlation between Novelty and Efficiency: {:.4f}'.format(corrNE))
+print('\n >> Correlation between Novelty and Cost leadership: {:.4f}'.format(corrNC))
+print('\n >> Correlation between Novelty and Efficiency: {:.4f}'.format(corrNE))
       
 
 
