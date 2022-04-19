@@ -315,6 +315,7 @@ fig.savefig(Fname2b,  # name (and path) for storing image
             dpi=300,  # image resolution
             bbox_inches='tight')  # remove white space around image
 
+#dispalying exercise info
 print(
     '\n\n==========================================================================================================================')
 print(
@@ -358,6 +359,7 @@ plt.savefig(Fname3a,  # name (and path) for storing image
             dpi=300,  # image resolution
             bbox_inches='tight')  # remove white space around image
 
+#dispalying exercise info
 print(
     '\n\n==========================================================================================================================')
 print(
@@ -419,6 +421,7 @@ plt.savefig(Fname3b,  # name (and path) for storing image
             dpi=300,  # image resolution
             bbox_inches='tight')  # remove white space around image
 
+#dispalying exercise info
 print(
     '\n\n==========================================================================================================================')
 print(
@@ -533,29 +536,6 @@ returns_pros = round(100 * returns, 2)
 print('\n\nReturns = {:.5f} (i.e. almost {} %)'.format(returns, returns_pros))
 
 ###############################################################################
-################################### Extra 10 ##################################
-###############################################################################
-"""
-print('\n\n==========================================================================================================================')
-print('\r=============================================== Extra 10 =================================================================')
-
-
-#values given in exercise
-#removing hashtags enables dynamic insertion of values
-Differentiation= float(input('Differentiation: '))
-Cost_leadership= float(input('Cost leadership: '))
-Efficiency= float(input('Efficiency: '))
-Novelty= float(input('Novelty: '))
-
-#calculating the returns
-returns = alpha+beta1*Differentiation+beta2*Cost_leadership+beta3*Efficiency\
-    +beta4*Novelty
-returns_pros = round(100*returns,2)
-
-#dispalying exercise solution
-print('\n\nReturns = {:.5f} (i.e. almost {} %)'.format(returns, returns_pros))
-"""
-###############################################################################
 ################################### 5.(a) #####################################
 ###############################################################################
 
@@ -601,6 +581,7 @@ if " +" in returns_2:
 # obtaining adjusted r-squared for the model
 adj_rsq2 = model2.rsquared_adj
 adj_pros2 = 100 * adj_rsq2
+
 # displaying exercise number
 print(
     '\n\n==========================================================================================================================')
