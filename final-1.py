@@ -103,28 +103,46 @@ print('\n >> The average outcome for the returns based on the whole data set is:
 print(" "+str(round(100*vs_2['returns'].mean(),2))+ " %")
 print('\n However, no company in the data set had precisely gained the mean outcome for the returns based on this sample.\n')
 print('\n >> The median outcome for returns and associated comapany info and strategy details in the data set is: \n')
+vs_mn = vs_2['Name_x'][vs_2.index[vs_2['returns']==vs_2['returns'].median()].tolist()[0]]
+vs_mnr = 100*round(vs_2['returns'][vs_2.index[vs_2['returns']==vs_2['returns'].median()].tolist()[0]],2)
+print(" >> The company with median returns is '{}' with returns percentage of {}%. More info: \n".format(vs_mn, vs_mnr))
 print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].median()].tolist()[0]])
-print('\n >> The maximum value for returns and associated comapany info and strategy details in the data set is: \n')
+print('\n >> The highest value for returns and associated comapany info and strategy details in the data set is: \n')
+vs_mxn = vs_2['Name_x'][vs_2.index[vs_2['returns']==vs_2['returns'].max()].tolist()[0]]
+vs_mxnr = round(100*vs_2['returns'][vs_2.index[vs_2['returns']==vs_2['returns'].max()].tolist()[0]],2)
+print(" >> The company with the highest returns is '{}' with returns percentage of {}%. More info: \n".format(vs_mxn, vs_mxnr))
 print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].max()].tolist()[0]])
-print('\n >> The minimum value for returns and associated comapany info and strategy details in the data set is: \n')
+print('\n >> The lowest value for returns and associated comapany info and strategy details in the data set is: \n')
+vs_mnn = vs_2['Name_x'][vs_2.index[vs_2['returns']==vs_2['returns'].min()].tolist()[0]]
+vs_mnnr = round(100*vs_2['returns'][vs_2.index[vs_2['returns']==vs_2['returns'].min()].tolist()[0]],2)
+print(" >> The company with the lowest returns is '{}' with returns percentage of {}%. More info: \n".format(vs_mnn, vs_mnnr))
 print(vs_2.loc[vs_2.index[vs_2['returns']==vs_2['returns'].min()].tolist()[0]])
 
 #displaying descriptive statistics for IT Sector
-print('\n\n >> Here are descriptive statistics for the data set for IT Sector: ')
+print('\n\n\n >> Here are descriptive statistics for the data set for IT Sector: ')
 print('\n >> The total number of companies sampled from IT Sector in the data set is: \n')
 print(" "+str(vs_IT['returns'].count())+ " Companies")
 print('\n >> The average outcome for the returns in the IT Sector based on the whole data set is: \n')
 print(" "+str(round(100*vs_IT['returns'].mean(),2))+ " %")
 print('\n However, no company in the IT Sector had precisely gained the mean outcome for the returns based on this sample.\n')
 print('\n >> The median outcome for returns and associated comapany info and strategy details in IT Sector is: \n')
+vsIT_mn = vs_IT['Name_x'][vs_IT.index[vs_IT['returns']==vs_IT['returns'].median()].tolist()[0]]
+vsIT_mnr = round(100*vs_IT['returns'][vs_IT.index[vs_IT['returns']==vs_IT['returns'].median()].tolist()[0]],2)
+print(" >> The company with median returns in IT Sector is '{}' with returns percentage of {}%. More info: \n".format(vsIT_mn, vsIT_mnr))
 print(vs_IT.loc[vs_IT.index[vs_IT['returns']==vs_IT['returns'].median()].tolist()[0]])
-print('\n >> The maximum value for returns and associated comapany info and strategy details in IT Sector is: \n')
+print('\n >> The highest value for returns and associated comapany info and strategy details in IT Sector is: \n')
+vsIT_mxn = vs_IT['Name_x'][vs_IT.index[vs_IT['returns']==vs_IT['returns'].max()].tolist()[0]]
+vsIT_mxnr = round(100*vs_IT['returns'][vs_IT.index[vs_IT['returns']==vs_IT['returns'].max()].tolist()[0]],2)
+print(" >> The company with highest returns in IT Sector is '{}' with returns percentage of {}%. More info: \n".format(vsIT_mxn, vsIT_mxnr))
 print(vs_IT.loc[vs_IT.index[vs_IT['returns']==vs_IT['returns'].max()].tolist()[0]])
-print('\n >> The minimum value for returns and associated comapany info and strategy details in IT Sector is: \n')
+print('\n >> The lowest value for returns and associated comapany info and strategy details in IT Sector is: \n')
+vsIT_mnn = vs_IT['Name_x'][vs_IT.index[vs_IT['returns']==vs_IT['returns'].min()].tolist()[0]]
+vsIT_mnnr = round(100*vs_IT['returns'][vs_IT.index[vs_IT['returns']==vs_IT['returns'].min()].tolist()[0]],2)
+print(" >> The company with lowest returns in IT Sector is '{}' with returns percentage of {}%. More info: \n".format(vsIT_mnn, vsIT_mnnr))
 print(vs_IT.loc[vs_IT.index[vs_IT['returns']==vs_IT['returns'].min()].tolist()[0]])
 
 #displaying descriptive statistics for Finincial Sector
-print('\n\n >> Here are descriptive statistics for the data set for Financial Sector: ')
+print('\n\n\n >> Here are descriptive statistics for the data set for Financial Sector: ')
 
 print('\n >> The total number of companies sampled from Financial Sector in the data set is: \n')
 print(" "+str(vs_Financials['returns'].count())+ " Companies")
@@ -132,14 +150,23 @@ print('\n >> The average outcome for the returns in the Finicial Sector based on
 print(" "+str(round(100*vs_Financials['returns'].mean()))+ " %")
 print('\n However, no company in the Financial Sector had precisely gained this mean outcome for the returns based on this sample.\n')
 print('\n >> The median outcome for returns and associated comapany info and strategy details in the Financial Sector is: \n')
+vsFin_mn = vs_Financials['Name_x'][vs_Financials.index[vs_Financials['returns']==vs_Financials['returns'].median()].tolist()[0]]
+vsFin_mnr = round(100*vs_Financials['returns'][vs_Financials.index[vs_Financials['returns']==vs_Financials['returns'].median()].tolist()[0]],2)
+print(" >> The company with median returns in Financial Sector is '{}' with returns percentage of {}%. More info: \n".format(vsFin_mn, vsFin_mnr))
 print(vs_Financials.loc[vs_Financials.index[vs_Financials['returns']==vs_Financials['returns'].median()].tolist()[0]])
-print('\n >> The maximum value for returns and associated comapany info and strategy details in Financial Sector is: \n')
+print('\n >> The highest value for returns and associated comapany info and strategy details in Financial Sector is: \n')
+vsFin_mxn = vs_Financials['Name_x'][vs_Financials.index[vs_Financials['returns']==vs_Financials['returns'].max()].tolist()[0]]
+vsFin_mxnr = round(100*vs_Financials['returns'][vs_Financials.index[vs_Financials['returns']==vs_Financials['returns'].max()].tolist()[0]],2)
+print(" >> The company with highest returns in Financial Sector is '{}' with returns percentage of {}%. More info: \n".format(vsFin_mxn, vsFin_mxnr))
 print(vs_Financials.loc[vs_Financials.index[vs_Financials['returns']==vs_Financials['returns'].max()].tolist()[0]])
-print('\n >> The minimum value for returns and associated comapany info and strategy details in Financial Sector is: \n')
+print('\n >> The lowest value for returns and associated comapany info and strategy details in Financial Sector is: \n')
+vsFin_mnn = vs_Financials['Name_x'][vs_Financials.index[vs_Financials['returns']==vs_Financials['returns'].min()].tolist()[0]]
+vsFin_mnnr = round(100*vs_Financials['returns'][vs_Financials.index[vs_Financials['returns']==vs_Financials['returns'].min()].tolist()[0]],2)
+print(" >> The company with lowest returns in Financial Sector is '{}' with returns percentage of {}%. More info: \n".format(vsFin_mnn, vsFin_mnnr))
 print(vs_Financials.loc[vs_Financials.index[vs_Financials['returns']==vs_Financials['returns'].min()].tolist()[0]])
 
 #displaying descriptive statistics for Industrial Sector
-print('\n\n >> Here are descriptive statistics for the data set for Industrial Sector: ')
+print('\n\n\n >> Here are descriptive statistics for the data set for Industrial Sector: ')
 
 print('\n >> The total number of companies sampled from Industrial Sector in the data set is: \n')
 print(" "+str(vs_Industrials['returns'].count())+ " Companies")
@@ -147,10 +174,19 @@ print('\n >> The average outcome for the returns in the Industrial Sector based 
 print(" "+str(round(100*vs_Industrials['returns'].mean(),2))+ " %")
 print('\n However, no company in the Industrial Sector had precisely gained the mean outcome for the returns based on this sample.\n')
 print('\n >> The median outcome for returns and associated comapany info and strategy details in Industrial Sectoris: \n')
+vsIndus_mn = vs_Industrials['Name_x'][vs_Industrials.index[vs_Industrials['returns']==vs_Industrials['returns'].median()].tolist()[0]]
+vsIndus_mnr = round(100*vs_Industrials['returns'][vs_Industrials.index[vs_Industrials['returns']==vs_Industrials['returns'].median()].tolist()[0]],2)
+print(" >> The company with median returns in Industrial Sector is '{}' with returns percentage of {}%. More info: \n".format(vsIndus_mn, vsIndus_mnr))
 print(vs_Industrials.loc[vs_Industrials.index[vs_Industrials['returns']==vs_Industrials['returns'].median()].tolist()[0]])
-print('\n >> The maximum value for returns and associated comapany info and strategy details in Industrial Sector is: \n')
+print('\n >> The highest value for returns and associated comapany info and strategy details in Industrial Sector is: \n')
+vsIndus_mxn = vs_Industrials['Name_x'][vs_Industrials.index[vs_Industrials['returns']==vs_Industrials['returns'].max()].tolist()[0]]
+vsIndus_mxnr = round(100*vs_Industrials['returns'][vs_Industrials.index[vs_Industrials['returns']==vs_Industrials['returns'].max()].tolist()[0]],2)
+print(" >> The company with highest returns in Industrial Sector is '{}' with returns percentage of {}%. More info: \n".format(vsIndus_mxn, vsIndus_mxnr))
 print(vs_Industrials.loc[vs_Industrials.index[vs_Industrials['returns']==vs_Industrials['returns'].max()].tolist()[0]])
-print('\n >> The minimum value for returns and associated comapany info and strategy details in Industrial Sector is: \n')
+print('\n >> The lowest value for returns and associated comapany info and strategy details in Industrial Sector is: \n')
+vsIndus_mnn = vs_Industrials['Name_x'][vs_Industrials.index[vs_Industrials['returns']==vs_Industrials['returns'].min()].tolist()[0]]
+vsIndus_mnnr = round(100*vs_Industrials['returns'][vs_Industrials.index[vs_Industrials['returns']==vs_Industrials['returns'].min()].tolist()[0]],2)
+print(" >> The company with lowest returns in Industrial Sector is '{}' with returns percentage of {}%. More info: \n".format(vsIndus_mnn, vsIndus_mnnr))
 print(vs_Industrials.loc[vs_Industrials.index[vs_Industrials['returns']==vs_Industrials['returns'].min()].tolist()[0]])
 
 
@@ -628,6 +664,11 @@ print('\n\n >> The model explains {:.2f} % of the variations in returns.\n\n'.fo
 print('\n\n==========================================================================================================================')
 print('\r================================================== Exercise 5.b.4 ========================================================')
 
+print('\n\n >>  Explanatory power for the model from all three sectors: {} %'.format(round(adj_pros)))
+print('\n >>  Explanatory power for the model from IT Sector: {} %'.format(round(adj_pros4)))
+print('\n >>  Explanatory power for the model from Financial Sector: {} %'.format(round(adj_pros2)))
+print('\n >>  Explanatory power for the model from Industrial Sector: {} %'.format(round(adj_pros3)))
+
 #checking the models to find which one explain more variations
 if adj_rsq2 > adj_rsq or adj_rsq3 > adj_rsq or adj_rsq3 > adj_rsq:
     print('\n\n >>  The first model explained lower variation than the splitted.')
@@ -638,7 +679,7 @@ if adj_rsq2 > adj_rsq or adj_rsq3 > adj_rsq or adj_rsq3 > adj_rsq:
     else:
         print('\n >>  The data obtained from Information Technology Sector explained more variations in the dataset than the original data set for three sectors.')
 else:
-    print('\n\n >>  The data obtained from original data set explained more variations than all splitted data sets.')
+    print('\n\n >>  The data obtained from original data set explained more variations than all three splitted data sets.')
         
 ###############################################################################
 ################################## 6.(a) ######################################
@@ -999,33 +1040,33 @@ fig, ax = plt.subplots(nrows = 2, ncols = 2, figsize = (18, 12))
 
 
 # plot subplots
-ax[0, 0].scatter(X1, Y, label = 'Actual Y', 
+ax[0, 0].scatter(X1, Y, label = 'Returns', 
            marker = '.', 
            s = 40,
            zorder = 2,
            color = 'green')
-ax[0, 1].scatter(X2,Y, label = 'Actual Y', 
+ax[0, 1].scatter(X2,Y, label = 'Returns',  
            marker = '.', 
            s = 40,
            zorder = 2, 
                  color = 'blue')
-ax[1, 0].scatter(X3, Y, label = 'Actual Y', 
+ax[1, 0].scatter(X3, Y, label = 'Returns',  
            marker = '.', 
            s = 40,
            zorder = 2, 
                  color = 'purple')
-ax[1, 1].scatter(X4, Y, label = 'Actual Y', 
+ax[1, 1].scatter(X4, Y, label = 'Returns',  
            marker = '.', 
            s = 40,
            zorder = 2,
                  color = 'red')
-ax[0, 0].plot(X1, P2, label = 'Predicted Y', 
+ax[0, 0].plot(X1, P2, label = 'Forecast', 
         color = 'black')
-ax[0, 1].plot(X2, P3, label = 'Predicted Y', 
+ax[0, 1].plot(X2, P3, label = 'Forecast',
         color = 'black')
-ax[1, 0].plot(X3, P4,  label = 'Predicted Y', 
+ax[1, 0].plot(X3, P4,  label = 'Forecast',
         color = 'black')
-ax[1, 1].plot(X4, P5, label = 'Predicted Y', 
+ax[1, 1].plot(X4, P5, label = 'Forecast',
         color = 'black')
 
 
@@ -1052,6 +1093,13 @@ ax[0,0].set_xlim(min(X1),max(X1))
 ax[0,1].set_xlim(min(X2),max(X2))
 ax[1,0].set_xlim(min(X3),max(X3))
 ax[1,1].set_xlim(min(X4),max(X4))
+
+# add legends
+ax[0,0].legend()
+ax[0,1].legend()
+ax[1,0].legend()
+ax[1,1].legend()
+
 
 # add title to figure
 fig.suptitle('Strategies and Returns', fontsize= 30)
