@@ -1149,17 +1149,17 @@ corrNR =  corr_nov
 print('\n\n==========================================================================================================================')
 print('\r==================================================== Extra 8 =============================================================')
 
-#print('\n >> Correlation between Differentiation and Returns: {:.4f}'.format(corrDR))
-#print('\n >> Correlation between Cost leadership and Returns: {:.4f}'.format(corrCLR))
-print('\n >> Correlation between Efficiency and Returns: {:.4f}'.format(corrEffR))
-print('\n >> Correlation between Novelty and Returns: {:.4f}'.format(corrNR))
+print('\n >> Correlation between Differentiation and Returns: {:.4f}'.format(corrDR))
+print('\n >> Correlation between Cost leadership and Returns: {:.4f}'.format(corrCLR))
+#print('\n >> Correlation between Efficiency and Returns: {:.4f}'.format(corrEffR))
+#print('\n >> Correlation between Novelty and Returns: {:.4f}'.format(corrNR))
 
 #print('\n >> Correlation between Novelty and Differentiation: {:.4f}'.format(corrND))
 #print('\n >> Correlation between Cost leadership and Efficiency: {:.4f}'.format(corrCE))
 #print('\n >> Correlation between Differentiation and Efficiency: {:.4f}'.format(corrDE))
-#print('\n >> Correlation between Differentiation and Cost leadership: {:.4f}'.format(corrDC))
+print('\n >> Correlation between Differentiation and Cost leadership: {:.4f}'.format(corrDC))
 #print('\n >> Correlation between Novelty and Cost leadership: {:.4f}'.format(corrNC))
-print('\n >> Correlation between Novelty and Efficiency: {:.4f}'.format(corrNE))
+#print('\n >> Correlation between Novelty and Efficiency: {:.4f}'.format(corrNE))
       
 
 
